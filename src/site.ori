@@ -1,0 +1,5 @@
+{
+  // previews = @map(index.yaml, getOgImage.js)
+  // images = ImageTree.js(["https://slack.com/blog/productivity/the-key-to-building-high-performing-teams"])
+  ogImages = @map(["https://slack.com/blog/productivity/the-key-to-building-high-performing-teams"], downloadOgImages.js)
+}

@@ -1,0 +1,7 @@
+{
+  "type": "module",
+  "dependencies": {
+    "@weborigami/origami": "^0.0.66",
+    "cheerio": "^1.0.0"
+  }
+}
