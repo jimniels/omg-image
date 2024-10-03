@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- prettier-ignore -->
+
+    <style>
+      ${./reset.css}
+      ${./index.css}
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>o(m)g:image</h1>
+      <p>Real social share images pulled from the web.</p>
+      <p>
+        (Hot take: every article on the internet doesn’t need an image to
+        represent it.)
+      </p>
+    </header>
+    <main>
+      <h1>Can you guess the article by the image alone?</h1>
+      <a href="#" class="social-card">
+        <img
+          src="/og-images/the-key-to-building-high-performing-teams.jpg"
+          alt=""
+          width="400"
+          class="social-card__image"
+        />
+        <h3 class="social-card__title">
+          The Key to Building High-Performing Teams
+        </h3>
+        <p class="social-card__domain">slack.com</p>
+      </a>
+      <!-- prettier-ignore -->
+      <ul class="answers-list">
+        ${@map(@take(./data.yaml, 1), (item) => `
+          ${./templates/ListItemAnswer.ori.html(item)}
+          ${@map(item/altTitles, (altTitle) => `
+            
+            ${./templates/ListItemAnswer.ori.html({ title: altTitle, url: '/path/to/wrong/answer'})}
+          `)}
+        `)}
+        
+          
+
+          
+        
+      </ul>
+    </main>
+  </body>
+</html>

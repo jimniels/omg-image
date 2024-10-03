@@ -1,7 +1,8 @@
 {
   "type": "module",
   "scripts": {
-    "download-og-images": "ori '@map(./src/data.yaml, (item) => ./scripts/downloadOgImage.js(item/url))'"
+    "download-og-images": "ori '@map(./src/data.yaml, (item) => ./scripts/downloadOgImage.js(item/url))'",
+    "start": "ori @serve ./src/site.ori"
   },
   "dependencies": {
     "@weborigami/origami": "^0.0.66",
