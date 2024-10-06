@@ -2,10 +2,11 @@
   "type": "module",
   "scripts": {
     "download-og-images": "ori '@map(./src/data.yaml, (item) => ./scripts/downloadOgImage.js(item/url))'",
-    "start": "ori @serve ./src/site.ori"
+    "start": "ori @serve ./src/site2.ori",
+    "build": "ori @copy ./src/site2.ori, @clean @files/build"
   },
   "dependencies": {
-    "@weborigami/origami": "^0.0.66",
+    "@weborigami/origami": "^0.0.67-beta.2",
     "cheerio": "^1.0.0"
   }
 }

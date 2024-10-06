@@ -1,0 +1,38 @@
+<!-- 
+@param {Object} _
+@param {string} _/questionsById - same as doing `src/questionsById.yaml`
+@param {string} _/questionId - the active in the URL, e.g. /question/:id
+@param {string?} _/answerId - the active answer in the URL, e.g. /questions/:id/answers/:id
+-->
+
+<!-- prettier-ignore -->
+<h1>${@if(
+  @equals(_/questionsById(_/questionId)/answerId, _/answerId),
+  _/questionsById(_/questionId)/answerId
+  "Correct!",
+  "Incorrect!"
+)}</h1>
+
+<a href="${_/questionsById(_/questionId)/url}" class="social-card">
+  <img
+    src="/og-images/${_/questionId}.jpg"
+    alt=""
+    width="400"
+    height="260"
+    class="social-card__image"
+  />
+  <h3 class="social-card__title">${_/questionsById(_/questionId)/title}</h3>
+  <p class="social-card__domain">${_/questionsById(_/questionId)/url}</p>
+</a>
+
+<!-- prettier-ignore -->
+<ul class="answers-list">
+  ${@map(
+    _/questionsById(_/questionId)/answersById,
+    (answer, answerId) => `
+      <li class="${@if(@equals(answerId, _/answerId), 'correct', 'incorrect')}">
+        ${answer}
+      </li>
+    `
+  )}
+</ul>

@@ -1,0 +1,26 @@
+<!-- 
+@param {Object} _
+@param {string} _/title
+@param {string} _/url
+@param {string} _/id
+@param {Array<{ title: string, url: string }>} _/questions
+-->
+<h1>Guess the article’s title</h1>
+<a href="#" class="social-card">
+  <img
+    src="/og-images/${_/id}.jpg"
+    alt=""
+    width="400"
+    height="260"
+    class="social-card__image"
+  />
+  <h3 class="social-card__title">${title}</h3>
+  <p class="social-card__domain">${url}</p>
+</a>
+<!-- prettier-ignore -->
+<ul class="answers-list">
+  ${@map(
+    _/questions,
+    (item) => ./ListItemAnswer.ori.html(item)
+  )}
+</ul>

@@ -1,0 +1,27 @@
+{
+  // This won't live reload!
+
+  index.html = templates/layout.ori.html(
+    templates/question.ori.html({ 
+      questionsById: questionsById.yaml
+      questionId: 1,
+    })
+  )
+
+  questions = {
+    ...@map(questionsById.yaml, {
+      extension: "->html",
+      // qId here as questionId breaks things and it stays as '1'??
+      value: (question, qId) => templates/layout.ori.html(
+        templates/question.ori.html({
+          questionsById: questionsById.yaml
+          questionId: qId,
+        })
+      )
+    })
+
+    
+  }
+
+  og-images
+}

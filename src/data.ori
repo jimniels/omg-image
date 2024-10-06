@@ -1,0 +1,19 @@
+@map(./data.yaml, {
+  key: (item, index) => `${index}.html`,
+  value: (item, index) => ({
+    id: index,
+    url: item/url,
+    questions: [
+      ...@values(@map(item/altTitles, (title, index) => ({
+        id: index,
+        title,
+        isAnswer: false,
+      }))),
+      {
+        id: "4",
+        title: item/title,
+        isAnswer: true,
+      },
+    ]
+  })
+})
