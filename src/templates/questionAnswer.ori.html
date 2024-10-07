@@ -21,8 +21,10 @@
     height="260"
     class="social-card__image"
   />
-  <h3 class="social-card__title">${_/questionsById(_/questionId)/title}</h3>
-  <p class="social-card__domain">${_/questionsById(_/questionId)/url}</p>
+  <div class="social-card__content">
+    <p>${_/questionsById(_/questionId)/title}</p>
+    <cite>${_/questionsById(_/questionId)/url}</cite>
+  </div>
 </a>
 
 <!-- prettier-ignore -->

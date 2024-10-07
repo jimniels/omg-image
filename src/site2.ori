@@ -8,9 +8,15 @@
     })
   )
 
+  // { questions/1.html, questions/1/answers/1.html }
+
   questions = {
     ...@map(questionsById.yaml, {
       extension: "->html",
+
+      // This doesn't work for `build` the svg looks fine, but the actual build results in an error
+      // key: (q, qId) => `${qId}/index.html`
+
       // qId here as questionId breaks things and it stays as '1'??
       value: (question, qId) => templates/layout.ori.html(
         templates/question.ori.html({
@@ -20,7 +26,17 @@
       )
     })
 
-    
+    // doesn't work for some reason? shows up in the build, but not the local server
+    "1/answers" = @map(questionsById.yaml/1/answersById, {
+      extension: "->html",
+      value: (a, aId) => templates/layout.ori.html(
+        templates/questionAnswer.ori.html({
+          questionsById: questionsById.yaml
+          questionId: "1",
+          answerId: aId
+        })
+      )
+    })
   }
 
   og-images
