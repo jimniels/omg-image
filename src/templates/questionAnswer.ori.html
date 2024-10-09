@@ -8,7 +8,6 @@
 <!-- prettier-ignore -->
 <h1>${@if(
   @equals(_/questionsById(_/questionId)/answerId, _/answerId),
-  _/questionsById(_/questionId)/answerId
   "Correct!",
   "Incorrect!"
 )}</h1>
@@ -22,17 +21,20 @@
     class="social-card__image"
   />
   <div class="social-card__content">
-    <p>${_/questionsById(_/questionId)/title}</p>
-    <cite>${_/questionsById(_/questionId)/url}</cite>
+    <p>
+      ${_/questionsById(_/questionId)/answersById(_/questionsById(_/questionId)/answerId)}
+    </p>
+    <cite>${../getDomainFromUrl.js(_/questionsById(_/questionId)/url)}</cite>
   </div>
 </a>
 
 <!-- prettier-ignore -->
-<ul class="answers-list">
+<ul class="answers">
   ${@map(
     _/questionsById(_/questionId)/answersById,
     (answer, answerId) => `
-      <li class="${@if(@equals(answerId, _/answerId), 'correct', 'incorrect')}">
+      ${@log('', _/answerId)}
+      <li class="answers__item answers__item--${@if(@equals(answerId, _/answerId), 'correct', 'incorrect')}">
         ${answer}
       </li>
     `

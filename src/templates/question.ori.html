@@ -21,12 +21,12 @@
 </div>
 
 <!-- prettier-ignore -->
-<ul class="answers-list">
+<ul class="answers">
   ${@map(
     _/questionsById(_/questionId)/answersById,
     (answer, answerId) => `
       <li>
-        <a href="/questions/${_/questionId}/answers/${answerId}">
+        <a href="/questions/${_/questionId}/answers/${answerId}" class="answers__item">
           ${answer}
         </a>
       </li>

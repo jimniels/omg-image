@@ -1,6 +1,11 @@
 {
   // This won't live reload!
 
+  _data: @map(questionsById.yaml, (question) => {
+    ...question
+    answersById: @shuffle(question/answersById)
+  })
+
   index.html = templates/layout.ori.html(
     templates/question.ori.html({ 
       questionsById: questionsById.yaml
@@ -8,36 +13,82 @@
     })
   )
 
-  // { questions/1.html, questions/1/answers/1.html }
+  questions = @map(_data, (question, questionId) => {
+    index.html: templates/layout.ori.html(
+      templates/question.ori.html({
+        questionsById: _data,
+        questionId
 
-  questions = {
-    ...@map(questionsById.yaml, {
-      extension: "->html",
-
-      // This doesn't work for `build` the svg looks fine, but the actual build results in an error
-      // key: (q, qId) => `${qId}/index.html`
-
-      // qId here as questionId breaks things and it stays as '1'??
-      value: (question, qId) => templates/layout.ori.html(
-        templates/question.ori.html({
-          questionsById: questionsById.yaml
-          questionId: qId,
+        // Doing this instead makes the server unresponsive,
+        // and it makes the build run out of memory and crash
+        // questionId: @slash/remove(questionId),
+      })
+    )
+    // When `answerId` here gets passed to my template and I do `@log(_/answerId)`
+    // Why is it's value `/1`?
+    answers: @map(question/answersById, (answer, answerId) => {
+      index.html: templates/layout.ori.html(
+        templates/questionAnswer.ori.html({
+          questionsById: _data,
+          questionId,
+          answerId
+          
+          // Same down here: crash when doing this
+          // answerId: @slash/remove(answerId)
         })
       )
     })
+  })
+  /*
+  
+  /questions/1
+  /questions/1?answer=1
+  
+  */
+
+  // /questions/:id/answers/:id
+  /*
+    questions2/
+      1/
+        index.html
+        answers/
+          1/
+            index.html
+          2/
+            index.html
+      2/
+  */
+
+  
+
+  // questions = {
+  //   ...@map(_data, {
+  //     extension: "->html",
+
+  //     // This doesn't work for `build` the svg looks fine, but the actual build results in an error
+  //     // key: (q, qId) => `${qId}/index.html`
+
+  //     // qId here as questionId breaks things and it stays as '1'??
+  //     value: (question, questionId) => templates/layout.ori.html(
+  //       templates/question.ori.html({
+  //         questionsById: _data,
+  //         questionId,
+  //       })
+  //     )
+  //   })
 
     // doesn't work for some reason? shows up in the build, but not the local server
-    "1/answers" = @map(questionsById.yaml/1/answersById, {
-      extension: "->html",
-      value: (a, aId) => templates/layout.ori.html(
-        templates/questionAnswer.ori.html({
-          questionsById: questionsById.yaml
-          questionId: "1",
-          answerId: aId
-        })
-      )
-    })
-  }
+    // "1/answers" = @map(questionsById.yaml/1/answersById, {
+    //   extension: "->html",
+    //   value: (a, aId) => templates/layout.ori.html(
+    //     templates/questionAnswer.ori.html({
+    //       questionsById: questionsById.yaml
+    //       questionId: "1",
+    //       answerId: aId
+    //     })
+    //   )
+    // })
+  // }
 
   og-images
 }
