@@ -1,9 +1,7 @@
 {
-  // This won't live reload!
-
   _data: @map(questionsById.yaml, (question) => {
     ...question
-    answersById: @shuffle(question/answersById)
+    answersById: @plain(@shuffle(question/answersById))
   })
 
   index.html = templates/layout.ori.html(
@@ -13,82 +11,26 @@
     })
   )
 
-  questions = @map(_data, (question, questionId) => {
+  questions = @map(_data, (question, qId) => {
     index.html: templates/layout.ori.html(
       templates/question.ori.html({
         questionsById: _data,
-        questionId
-
-        // Doing this instead makes the server unresponsive,
-        // and it makes the build run out of memory and crash
-        // questionId: @slash/remove(questionId),
+        questionId: @slash/remove(qId),
       })
     )
-    // When `answerId` here gets passed to my template and I do `@log(_/answerId)`
-    // Why is it's value `/1`?
-    answers: @map(question/answersById, (answer, answerId) => {
+
+    answers: @map(question/answersById, (answer, aId) => {
       index.html: templates/layout.ori.html(
         templates/questionAnswer.ori.html({
           questionsById: _data,
-          questionId,
-          answerId
-          
-          // Same down here: crash when doing this
-          // answerId: @slash/remove(answerId)
+          questionId: @slash/remove(qId),
+          questionIdNext: getNextQuestionId.js(@slash/remove(qId), @keys(_data)/length),
+          answerId: @slash/remove(aId)
         })
       )
     })
   })
-  /*
   
-  /questions/1
-  /questions/1?answer=1
-  
-  */
-
-  // /questions/:id/answers/:id
-  /*
-    questions2/
-      1/
-        index.html
-        answers/
-          1/
-            index.html
-          2/
-            index.html
-      2/
-  */
-
-  
-
-  // questions = {
-  //   ...@map(_data, {
-  //     extension: "->html",
-
-  //     // This doesn't work for `build` the svg looks fine, but the actual build results in an error
-  //     // key: (q, qId) => `${qId}/index.html`
-
-  //     // qId here as questionId breaks things and it stays as '1'??
-  //     value: (question, questionId) => templates/layout.ori.html(
-  //       templates/question.ori.html({
-  //         questionsById: _data,
-  //         questionId,
-  //       })
-  //     )
-  //   })
-
-    // doesn't work for some reason? shows up in the build, but not the local server
-    // "1/answers" = @map(questionsById.yaml/1/answersById, {
-    //   extension: "->html",
-    //   value: (a, aId) => templates/layout.ori.html(
-    //     templates/questionAnswer.ori.html({
-    //       questionsById: questionsById.yaml
-    //       questionId: "1",
-    //       answerId: aId
-    //     })
-    //   )
-    // })
-  // }
-
+  svgs
   og-images
 }

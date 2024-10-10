@@ -26,7 +26,8 @@
     _/questionsById(_/questionId)/answersById,
     (answer, answerId) => `
       <li>
-        <a href="/questions/${_/questionId}/answers/${answerId}" class="answers__item">
+        <a href="/questions/${_/questionId}/answers/${answerId}" class="answers__item answers__item--selectable">
+          ${../svgs/iconCircle.svg}
           ${answer}
         </a>
       </li>

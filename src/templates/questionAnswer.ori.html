@@ -6,11 +6,15 @@
 -->
 
 <!-- prettier-ignore -->
-<h1>${@if(
+${@if(
   @equals(_/questionsById(_/questionId)/answerId, _/answerId),
-  "Correct!",
-  "Incorrect!"
-)}</h1>
+  `
+<h1 class="correct" style="color: var(--color-success)">You got it!</h1>
+`, `
+<h1 class="incorrect" style="color: var(--color-error)">
+  Nah, missed that one.
+</h1>
+` )}
 
 <a href="${_/questionsById(_/questionId)/url}" class="social-card">
   <img
@@ -33,10 +37,26 @@
   ${@map(
     _/questionsById(_/questionId)/answersById,
     (answer, answerId) => `
-      ${@log('', _/answerId)}
-      <li class="answers__item answers__item--${@if(@equals(answerId, _/answerId), 'correct', 'incorrect')}">
+      <li class="
+        answers__item
+        ${@if(@equals(@slash/remove(answerId), _/answerId), 'answers__item--current')}
+        ${@if(@equals(@slash/remove(answerId), _/questionsById(_/questionId)/answerId), 
+          'answers__item--correct', 
+          'answers__item--incorrect'
+          )}
+        ">
+        ${@if(@equals(@slash/remove(answerId), _/questionsById(_/questionId)/answerId), 
+          ../svgs/iconCircleCheck.svg
+          )}
         ${answer}
       </li>
     `
   )}
 </ul>
+
+<div class="question-nav">
+  <a href="/questions/${_/questionId}/">Back to question</a>
+  <a href="/questions/${_/questionIdNext}/"
+    >${@if(@equals(_/questionIdNext, '1'), 'Start over', 'Next question')}</a
+  >
+</div>
