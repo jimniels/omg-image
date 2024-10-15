@@ -1,0 +1,8 @@
+(qId, aId) => layout.ori.html(
+  questions.$id.answers.$id.ori.html({
+    questionsById: ../questionsById.yaml,
+    questionId: qId,
+    questionIdNext: getNextQuestionId.js(qId, @keys(../questionsById.yaml)/length),
+    answerId: aId
+  })
+)

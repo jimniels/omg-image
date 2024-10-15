@@ -3,7 +3,6 @@
  * @param {number} totalNumberOfQuestions
  */
 export default function getNextQuestionId(questionId, totalNumberOfQuestions) {
-  console.log("question, total", questionId, totalNumberOfQuestions);
   if (questionId == totalNumberOfQuestions) {
     return "1";
   }

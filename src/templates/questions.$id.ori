@@ -1,0 +1,6 @@
+(qId) => layout.ori.html(
+  questions.$id.ori.html({
+    questionsById: ../questionsById.yaml,
+    questionId: @slash/remove(qId),
+  })
+)

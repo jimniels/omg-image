@@ -4,30 +4,14 @@
     answersById: @plain(@shuffle(question/answersById))
   })
 
-  index.html = templates/layout.ori.html(
-    templates/question.ori.html({ 
-      questionsById: questionsById.yaml
-      questionId: 1,
-    })
-  )
 
+  index.html = templates/questions.$id.ori('1')
+  
   questions = @map(_data, (question, qId) => {
-    index.html: templates/layout.ori.html(
-      templates/question.ori.html({
-        questionsById: _data,
-        questionId: @slash/remove(qId),
-      })
-    )
+    index.html: templates/questions.$id.ori(@slash/remove(qId))
 
     answers: @map(question/answersById, (answer, aId) => {
-      index.html: templates/layout.ori.html(
-        templates/questionAnswer.ori.html({
-          questionsById: _data,
-          questionId: @slash/remove(qId),
-          questionIdNext: getNextQuestionId.js(@slash/remove(qId), @keys(_data)/length),
-          answerId: @slash/remove(aId)
-        })
-      )
+      index.html: templates/questions.$id.answers.$id.ori(@slash/remove(qId), @slash/remove(aId))
     })
   })
   

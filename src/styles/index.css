@@ -70,6 +70,9 @@ body {
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   background-color: var(--bg-layer-1);
   color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 footer {
@@ -95,7 +98,7 @@ footer a {
 }
 
 main h1 {
-  font-size: 24px;
+  font-size: 21px;
   font-weight: 700;
   text-align: center;
   line-height: 1.2;
@@ -105,24 +108,24 @@ main {
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: 24px;
-  gap: 24px;
+  padding: 16px;
+  gap: 16px;
   align-items: center;
   justify-content: center;
   background-color: var(--bg-layer-2);
   box-shadow: 0 20px 25px -5px #0000001a, 0 8px 10px -6px #0000001a;
-  max-width: 480px;
+  max-width: 400px;
   margin: 0 auto;
+  border-radius: 0 0 var(--border-radius-outer) var(--border-radius-outer);
 }
 
-@media (min-width: 600px) {
+@media (min-width: 900px) {
   body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-areas: "main header";
     align-items: center;
     padding: 0 16px;
-    gap: 48px;
   }
   footer {
     grid-area: header;
@@ -134,10 +137,11 @@ main {
   }
   main {
     grid-area: main;
-    gap: 24px;
+    gap: 16px;
     justify-self: flex-end;
     border-radius: var(--border-radius-outer);
-    padding: 40px;
+    padding: 32px;
+    max-width: 480px;
   }
 }
 
