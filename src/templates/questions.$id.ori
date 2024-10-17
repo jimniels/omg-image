@@ -1,6 +1,20 @@
-(qId) => layout.ori.html(
-  questions.$id.ori.html({
+(qId) => layout.ori.html({
+  title: `Question ${qId}`,
+  head: `
+  <link rel="preload" href="/questions/${qId}/answers/1/" as="fetch" />
+  <link rel="preload" href="/questions/${qId}/answers/2/" as="fetch" />
+  <link rel="preload" href="/questions/${qId}/answers/3/" as="fetch" />
+  <link rel="preload" href="/questions/${qId}/answers/4/" as="fetch" />
+  `,
+  children: questions.$id.ori.html({
     questionsById: ../questionsById.yaml,
     questionId: @slash/remove(qId),
+    answers: @map(
+      ../questionsById.yaml(qId)/answersById,
+      (a, aId) => ({
+        id: @slash/remove(aId),
+        text: a
+      })
+    )
   })
-)
+})

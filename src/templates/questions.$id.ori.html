@@ -1,36 +1,37 @@
 <!-- 
 @param {Object} _
-@param {string} _/questionsById
 @param {string} _/questionId
+@param {Array<{ id: string, text: string }>} _/answers
 -->
 
-<h1>Guess the article</h1>
+<h1 class="heading">Guess the article:</h1>
 
-<div class="social-card social-card--masked">
-  <img
-    src="/og-images/${_/questionId}.jpg"
-    alt=""
-    width="400"
-    height="260"
-    class="social-card__image"
-  />
-  <div class="social-card__content">
-    <p>???</p>
-    <cite>???</cite>
+<div class="card">
+  <div class="social-card social-card--masked">
+    <img
+      src="/og-images/${_/questionId}.jpg"
+      alt=""
+      width="400"
+      height="260"
+      class="social-card__image"
+    />
+    <div class="social-card__content">
+      <p>???</p>
+      <cite>???</cite>
+    </div>
   </div>
-</div>
 
-<!-- prettier-ignore -->
-<ul class="answers">
-  ${@map(
-    _/questionsById(_/questionId)/answersById,
-    (answer, answerId) => `
+  <!-- prettier-ignore -->
+  <ul class="answers">
+    ${@map(_/answers, (answer) => `
       <li>
-        <a href="/questions/${_/questionId}/answers/${answerId}" class="answers__item answers__item--selectable">
+        <a
+          href="/questions/${_/questionId}/answers/${answer/id}/"
+          class="answers__item answers__item--selectable">
+          ${answer/text}
           ${../svgs/iconCircle.svg}
-          ${answer}
         </a>
       </li>
-    `
-  )}
-</ul>
+    `)}
+  </ul>
+</div>

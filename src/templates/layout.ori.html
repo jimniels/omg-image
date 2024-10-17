@@ -1,17 +1,25 @@
+<!-- 
+@param {Object} _
+@param {string} _/title
+@param {string} _/head
+@param {string} _/children
+-->
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>o(m)g:image</title>
+    <title>${@if(_/title, `${_/title} |`)} o(m)g:image</title>
+
     <!-- prettier-ignore -->
     <style>
       ${../styles/reset.css}
       ${../styles/index.css}
     </style>
+    ${_/head}
   </head>
   <body>
-    <main>${_}</main>
+    <main>${_/children}</main>
     <footer>
       <h1><a href="/">${./logo.svg}</a></h1>
       <p>A quiz of article images pulled from the web.</p>

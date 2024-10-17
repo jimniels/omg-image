@@ -1,8 +1,15 @@
-(qId, aId) => layout.ori.html(
-  questions.$id.answers.$id.ori.html({
+(qId, aId) => layout.ori.html({
+  __nextQuestionId: getNextQuestionId.js(qId, @keys(../questionsById.yaml)/length),
+
+  title: `Question ${qId} | Answer ${aId}`,
+  head: `
+    <link rel="preload" href="/questions/${__nextQuestionId}/" as="fetch" />
+    <link rel="preload" href="/og-images/${qId}.jpg" as="image" />
+  `,
+  children: questions.$id.answers.$id.ori.html({
     questionsById: ../questionsById.yaml,
     questionId: qId,
-    questionIdNext: getNextQuestionId.js(qId, @keys(../questionsById.yaml)/length),
+    questionIdNext: __nextQuestionId,
     answerId: aId
   })
-)
+})
