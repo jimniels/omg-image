@@ -10,22 +10,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>${@if(_/title, `${_/title} |`)} o(m)g:image</title>
+    <link rel="stylesheet" href="/index.css" />
 
-    <!-- prettier-ignore -->
-    <style>
-      ${../styles/reset.css}
-      ${../styles/index.css}
-    </style>
+    <!-- TODO: add og:image, of course, for an og:image site -->
+
     ${_/head}
   </head>
   <body>
     <main>${_/children}</main>
     <footer>
-      <h1><a href="/">${./logo.svg}</a></h1>
-      <p>A quiz of article images pulled from the web.</p>
+      <h1><a href="/">${./logo-2.svg}</a></h1>
+      <!-- <p>Can you guess the article for these images?</p> -->
+      <!-- <p>
+        <a href="">Hot take</a>: every web page in the world doesn’t need an
+        image.
+      </p> -->
       <p>
-        <a href="">Hot take</a>: every article on the internet doesn’t need an
-        image to represent it.
+        <a href="">A project by Jim Nielsen</a> illustrating the absurdity of
+        trying to summarize every web page in the world with an image.
       </p>
     </footer>
   </body>

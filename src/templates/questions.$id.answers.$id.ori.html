@@ -13,8 +13,8 @@
 )}">
   ${@if(
     @equals(_/questionsById(_/questionId)/answerId, _/answerId),
-    `That’s it!`,
-    `Nope, not that one.`
+    `You got it!`,
+    `You missed that one.`
   )}
 </h1>
 
@@ -60,7 +60,9 @@
 
 <!-- <div class="question-nav"> -->
 <!-- <a href="/questions/${_/questionId}/">Back to question</a> -->
-<a href="/questions/${_/questionIdNext}/" class="next-btn"
+<a
+  href="/questions/${_/questionIdNext}/"
+  class="next-btn ${@if(@equals(_/questionIdNext, '1'), 'next-btn--restart')}"
   >${@if(@equals(_/questionIdNext, '1'), 'Start over', 'Next question')}</a
 >
 <!-- </div> -->
