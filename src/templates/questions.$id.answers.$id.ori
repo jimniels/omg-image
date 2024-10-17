@@ -4,7 +4,7 @@
   title: `Question ${qId} | Answer ${aId}`,
   head: `
     <link rel="preload" href="/questions/${__nextQuestionId}/" as="fetch" />
-    <link rel="preload" href="/og-images/${qId}.jpg" as="image" />
+    <link rel="preload" href="/og-images/${__nextQuestionId}.jpg" as="image" />
   `,
   children: questions.$id.answers.$id.ori.html({
     questionsById: ../questionsById.yaml,
