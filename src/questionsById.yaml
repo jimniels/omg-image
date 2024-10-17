@@ -1,6 +1,5 @@
 1:
   url: https://slack.com/blog/productivity/the-key-to-building-high-performing-teams
-  # keys get turned into strings, but these don't
   answerId: "1"
   answersById:
     1: The Key to Building High-Performing Teams
@@ -23,3 +22,11 @@
     2: A Deep Dive into the Visual Language of Dystopian Imagery
     3: Tailwind has Open-sourced the V4 Alpha
     4: AI Homogenization Is Shaping The World
+4:
+  url: https://www.motherjones.com/environment/2024/10/scientists-alarmed-collapse-natural-carbon-sinks/
+  answerId: "1"
+  answersById:
+    1: Scientists Alarmed by Signs of Collapse in Earth’s Natural Carbon Sinks
+    2: "Await-Tree: A Panacea for Observability in Async Rust"
+    3: Warming Climate Puts Global Forests at Risk of Widespread Decline, Experts Warn
+    4: "75x faster: optimizing the Ion compiler backend"

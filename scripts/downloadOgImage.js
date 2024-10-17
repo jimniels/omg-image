@@ -10,8 +10,7 @@ const __dirname = path.dirname(__filename);
 /**
  * @param {string} url
  */
-export default async function downloadOgImage(url) {
-  const id = url.split("/").pop();
+export default async function downloadOgImage(url, id) {
   const ogImageUrl = await getOgImageUrl(url);
   if (!ogImageUrl) {
     console.error(
@@ -29,6 +28,9 @@ export default async function downloadOgImage(url) {
   let urlExtension = path.extname(urlPathname);
   if (urlExtension === ".jpeg") {
     urlExtension = ".jpg";
+  }
+  if (urlExtension !== ".jpg") {
+    console.log("Warning: og:image URL has non-jpg extension: ", ogImageUrl);
   }
   if (!urlExtension) {
     console.error("Failed to determine file extension from URL: ", ogImageUrl);
