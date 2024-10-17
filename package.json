@@ -1,10 +1,10 @@
 {
   "type": "module",
   "scripts": {
-    "download-og-images": "ori '@map(./src/data.yaml, (item) => ./scripts/downloadOgImage.js(item/url))'",
+    "download-og-images": "ori '@map(./src/questionsById.yaml, (item, itemId) => ./scripts/downloadOgImage.js(item/url, itemId))'",
     "start": "ori @serve @watch src, =@debug src/site2.ori",
     "build": "ori @copy src/site2.ori, @clean @files/build",
-    "postbuild": "html-minifier --input-dir build --output-dir build-2 --collapse-whitespace --remove-comments --remove-optional-tags --remove-redundant-attributes --remove-script-type-attributes --remove-tag-whitespace --use-short-doctype --minify-css true --minify-js"
+    "postbuild": "html-minifier --file-ext html --input-dir build --output-dir build --collapse-whitespace --remove-comments --remove-optional-tags --remove-redundant-attributes --remove-script-type-attributes --remove-tag-whitespace --use-short-doctype --minify-css true --minify-js"
   },
   "dependencies": {
     "@weborigami/origami": "^0.0.69",
