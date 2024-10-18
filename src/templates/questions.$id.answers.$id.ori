@@ -1,6 +1,6 @@
 (qId, aId) => layout.ori.html({
   __nextQuestionId: getNextQuestionId.js(qId, @keys(../questionsById.yaml)/length),
-
+  
   title: `Question ${qId} | Answer ${aId}`,
   head: `
     <link rel="preload" href="/questions/${__nextQuestionId}/" as="fetch" />
@@ -10,6 +10,7 @@
     questionsById: ../questionsById.yaml,
     questionId: qId,
     questionIdNext: __nextQuestionId,
-    answerId: aId
+    answerId: aId,
+    isCorrect: @equals(../questionsById.yaml(qId)/answerId, aId)
   })
 })

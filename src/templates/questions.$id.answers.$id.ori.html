@@ -5,38 +5,44 @@
 @param {string?} _/answerId - the active answer in the URL, e.g. /questions/:id/answers/:id
 -->
 
-<!-- prettier-ignore -->
-<h1 class="heading heading--${@if(
-  @equals(_/questionsById(_/questionId)/answerId, _/answerId),
-  `correct`,
-  `incorrect`
-)}">
-  ${@if(
-    @equals(_/questionsById(_/questionId)/answerId, _/answerId),
-    `You got it!`,
-    `You missed that one.`
-  )}
-</h1>
+<div class="h ${@if(@equals(_/questionIdNext, '1'), 'h--end')}">
+  <!-- prettier-ignore -->
+  <h1 class="
+    heading
+    heading--${@if(_/isCorrect, 'correct', 'incorrect')}">
+    ${@if(
+      _/isCorrect,
+      `Correct!`,
+      `Incorrect`
+    )}
+  </h1>
+  <a href="/questions/${_/questionIdNext}/" class="h__status">
+    ${@if(@equals(_/questionIdNext, '1'), 'Start over', 'Next')}
+  </a> 
+</div>
 
-<div class="card">
-  <a href="${_/questionsById(_/questionId)/url}" class="social-card">
-    <img
-      src="/og-images/${_/questionId}.jpg"
-      alt=""
-      width="400"
-      height="260"
-      class="social-card__image"
-    />
-    <div class="social-card__content">
-      <p>
-        ${_/questionsById(_/questionId)/answersById(_/questionsById(_/questionId)/answerId)}
-      </p>
-      <cite>${../getDomainFromUrl.js(_/questionsById(_/questionId)/url)}</cite>
-    </div>
-  </a>
+  <div class="card">
+    <a href="${_/questionsById(_/questionId)/url}" class="social-preview">
+      <img
+        src="/og-images/${_/questionId}.jpg"
+        alt=""
+        width="400"
+        height="260"
+        class="social-preview__image"
+      />
+      <div class="social-preview__content">
+        <p>
+          ${_/questionsById(_/questionId)/answersById(_/questionsById(_/questionId)/answerId)}
+        </p>
+        <cite
+          >${../getDomainFromUrl.js(_/questionsById(_/questionId)/url)}</cite
+        >
+      </div>
+    </a>
+  </div>
 
   <!-- prettier-ignore -->
-  <ul class="answers">
+  <ul class="card answers">
   ${@map(
     _/questionsById(_/questionId)/answersById,
     (answer, answerId) => `
@@ -56,13 +62,15 @@
     `
   )}
 </ul>
-</div>
 
-<!-- <div class="question-nav"> -->
-<!-- <a href="/questions/${_/questionId}/">Back to question</a> -->
-<a
-  href="/questions/${_/questionIdNext}/"
-  class="next-btn ${@if(@equals(_/questionIdNext, '1'), 'next-btn--restart')}"
-  >${@if(@equals(_/questionIdNext, '1'), 'Start over', 'Next question')}</a
+  <!-- <div
+  class="results ${@if(_/isCorrect, 'results--correct', 'results--incorrect')}"
 >
-<!-- </div> -->
+  ${@if( _/isCorrect, `<span>Correct!</span>`, `<span>Incorrect.</span>` )}
+  <a
+    href="/questions/${_/questionIdNext}/"
+    class="${@if(@equals(_/questionIdNext, '1'), 'next-btn--restart')}"
+    >${@if(@equals(_/questionIdNext, '1'), 'Start over', 'Next question')}</a
+  >
+</div> -->
+</div>
