@@ -2,6 +2,7 @@
 import * as cheerio from "cheerio";
 
 /**
+ * Given a URL, return the og:image URL.
  * @param {string} url
  * @returns {Promise<string | undefined>}
  */

@@ -1,55 +1,27 @@
+// TODO:
+// - fix links to blog posts
+// - add "x" for incorrect answers
+// - add og:image and other meta tags
+// - add favicon
+// - add 404 page
+// - refactor questions/:id/answers template
 {
-  _data = data.ori/
+  // Can you do this and make the data global everywhere, even nested templates?
+  __data: questionsById.yaml
 
-  // previews = @map(index.yaml, getOgImage.js)
-  // images = ImageTree.js(["https://slack.com/blog/productivity/the-key-to-building-high-performing-teams"])
-  // ogImages = @map(["https://slack.com/blog/productivity/the-key-to-building-high-performing-teams"], downloadOgImages.js)
-  // layout.ori.html({ title, children })
-  index.html = ./templates/layout.ori.html({
-    title: 'o(m)g:image',
-    children: ./templates/index.ori.html({
-      title: _data/0/title,
-      url: _data/0/url,
-      id: _data/0/id,
-      questions: _data/0/questions
+
+  index.html = templates/questions.$id.ori('1')
+  
+  questions = @map(__data, (question, questionId) => {
+    index.html: templates/questions.$id.ori(@slash/remove(questionId))
+
+    answers: @map(question/answersById, (answer, answerId) => {
+      index.html: templates/questions.$id.answers.$id.ori(@slash/remove(questionId), @slash/remove(answerId))
     })
   })
+  
+  index.css = styles/index.ori()
 
-  qs = ./generatePages.js(./data.yaml)
-
-  q = @map(./data2.yaml, {
-    key: (item) => item/id,
-    value: (item) => item/questions
-  })
-
-  // questions = @map(_data, {
-  //   // TODO: why can't this be `${item/id}/index.html`?
-  //   key: (item) => `${item/id}.html`,
-  //   value: (item) => ./templates/layout.ori.html({
-  //     title: `o(m)g:image`,
-  //     // children: `hello ${item/url}`
-  //     children: ./templates/index.ori.html({
-  //       title: item/title,
-  //       url: item/url,
-  //       id: item/id,
-  //       questions: item/questions
-  //     })
-  //   })
-  // })
-
-
-  // questions = {
-  //   ...@map(./data.yaml, {
-  //     extension: "->html",
-  //     value: 'test'
-  //   })
-  //   answers = {
-  //     ...@map(./data.yaml, (item) => @map(item/altTitles, index => {
-  //       extension: "->html",
-  //       value: 'test'
-  //     }))
-  //   }
-  // }
-
-  og-images
+  // Copy evertying from `static` into the root of `build`
+  ...(../static)
 }

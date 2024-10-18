@@ -8,7 +8,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 /**
- * @param {string} url
+ * @param {string} url - the URL of an article, where the og:image will be grabbed from
+ * @param {string} id - the id of the image file that will be saved
  */
 export default async function downloadOgImage(url, id) {
   const ogImageUrl = await getOgImageUrl(url);
@@ -38,7 +39,7 @@ export default async function downloadOgImage(url, id) {
   }
   const fileName = id + urlExtension;
 
-  const filePath = path.resolve(__dirname, "../src/og-images", fileName);
+  const filePath = path.resolve(__dirname, "../static/og-images", fileName);
   if (fs.existsSync(filePath)) return;
 
   fs.writeFileSync(filePath, Buffer.from(await blob.arrayBuffer()));
