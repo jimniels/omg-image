@@ -1,3 +1,6 @@
+/*==============================================================================
+  Vars
+  ============================================================================*/
 :root {
   --gray-50: #f9fafb;
   --gray-100: #f3f4f6;
@@ -12,46 +15,38 @@
   --gray-950: #030712;
 
   --padding-x: 16px;
+  --border-radius: 12px;
 
   /* Theme specific */
-  --border-radius: 12px;
-  --max-content-size: 400px;
-
-  --bg-layer-1: var(--gray-50);
-  --bg-layer-2: white;
-  --bg-layer-3: var(--gray-100);
-
+  --color-bg-1: var(--gray-100);
+  --color-bg-2: white;
   --color-text: var(--gray-900);
   --color-text-muted: var(--gray-500);
   --color-border: var(--gray-200);
   --color-radio: var(--gray-300);
-  --color-shadow: var(--gray-300);
   --color-accent: #1d4ed8;
   --color-success: #16a34a; /* green-600 */
-  --color-success-bg: #f0fdf4; /* green-50 */
   --color-error: #dc2626; /* red-600 */
-  --color-error-bg: #fef2f2; /* red-50 */
 }
 
+/* Theme overrides */
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg-layer-1: var(--gray-950);
-    --bg-layer-2: var(--gray-900);
-    --bg-layer-3: var(--gray-800);
-
+    --color-bg-1: var(--gray-950);
+    --color-bg-2: var(--gray-800);
     --color-text: var(--gray-50);
     --color-text-muted: var(--gray-600);
     --color-border: var(--gray-700);
     --color-radio: var(--gray-600);
-    --color-shadow: var(--gray-950);
     --color-accent: #3b82f6;
     --color-success: #16a34a; /* green-500 */
-    --color-success-bg: transparent; /* green-50 */
     --color-error: #dc2626; /* red-600 */
-    --color-error-bg: transparent; /* red-50 */
   }
 }
 
+/*==============================================================================
+  General
+  ============================================================================*/
 *,
 *::before,
 *::after {
@@ -69,19 +64,19 @@ a {
   color: var(--color-accent);
 }
 
-strong {
-  font-weight: 700;
-}
-
 body {
   font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  background-color: var(--bg-layer-1);
+  background-color: var(--color-bg-1);
   color: var(--color-text);
   display: flex;
   flex-direction: column;
   gap: 48px;
 }
+
+/*==============================================================================
+  Main, Footer, & Layout
+  ============================================================================*/
 
 footer {
   color: var(--color-text-muted);
@@ -93,35 +88,23 @@ footer {
   padding: 24px 16px;
   line-height: 1.3;
 }
+
 footer h1 {
   color: var(--color-text);
 }
-/* footer h1 + p {
-  font-weight: 600;
-} */
+
 footer p {
   color: var(--color-text-muted);
 }
+
 footer a {
   color: inherit;
 }
+
 footer > * {
   max-width: 320px;
   margin-left: auto;
   margin-right: auto;
-}
-
-.heading {
-  font-size: 24px;
-  font-weight: 700;
-  text-align: center;
-  line-height: 1.2;
-}
-.heading--correct {
-  color: var(--color-success);
-}
-.heading--incorrect {
-  color: var(--color-error);
 }
 
 main {
@@ -143,13 +126,13 @@ main {
   }
   body {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas: "main header";
+    grid-template-columns: 1fr 500px 340px 1fr;
+    grid-template-areas: "col-l main footer col-r";
     align-items: center;
     padding: 0 16px;
   }
   footer {
-    grid-area: header;
+    grid-area: footer;
   }
   main {
     grid-area: main;
@@ -163,10 +146,14 @@ main {
 .card {
   border-radius: var(--border-radius);
   box-shadow: 0 20px 25px -5px #0000001a, 0 8px 10px -6px #0000001a;
-  background-color: var(--bg-layer-2);
+  background-color: var(--color-bg-2);
   overflow: hidden;
   width: 100%;
 }
+
+/*==============================================================================
+  Social preview
+  ============================================================================*/
 
 .social-preview {
   display: flex;
@@ -216,6 +203,9 @@ main {
   line-height: 1;
 }
 
+/*==============================================================================
+  Answers
+  ============================================================================*/
 .answers {
   display: flex;
   flex-direction: column;
@@ -257,20 +247,12 @@ main {
     left: calc(var(--padding-x) * -1);
   }
 }
-.answers__item:before {
-  /* content: ""; */
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  margin-right: 16px;
-  flex-shrink: 0;
-}
+
 a.answers__item:before {
   border: 1px solid var(--color-border);
 }
 a.answers__item:hover,
 a.answers__item:hover svg {
-  /* background-color: var(--bg-layer-3); */
   color: var(--color-accent);
 }
 a.answers__item:hover:before {
@@ -280,93 +262,37 @@ a.answers__item:hover:before {
 .answers__item--correct,
 .answers__item--correct svg {
   color: var(--color-success);
-  /* border-color: var(--color-success); */
-  /* background-color: var(--color-success-bg); */
-}
-.answers__item--correct:before {
-  /* content: url(/svgs/iconCheck.svg); */
 }
 .answers__item--incorrect {
   color: var(--color-text-muted);
 }
-.answers__item--current.answers__item--incorrect {
+.answers__item--current.answers__item--incorrect,
+.answers__item--current.answers__item--incorrect svg {
   color: var(--color-error);
   text-decoration: line-through;
-  /* background-color: var(--color-error-bg);
-  border-color: var(--color-error); */
 }
 
-.question-nav {
-  position: absolute;
-  display: flex;
-  flex-direction: row;
-  gap: 8px;
-  bottom: -40px;
-  left: 0;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-
-  padding: 16px;
-}
-
-.next-btn {
-  display: block;
-  padding: 12px 24px;
-  border-radius: var(--border-radius);
-  background-color: var(--color-accent);
-  color: var(--bg-layer-1);
-  text-decoration: none;
-
-  text-align: center;
-  position: absolute;
-  bottom: -56px;
-  left: 0;
-  right: 0;
-}
-
-.next-btn--restart {
-  background-color: var(--color-text);
-}
-
-.results {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  position: absolute;
-  bottom: -56px;
-  left: 0;
-  right: 0;
-}
-.results > * {
-  padding: 12px 24px;
-  color: white;
-  border-radius: var(--border-radius);
-}
-.results a {
-  flex-grow: 1;
-  background-color: var(--color-accent);
-  text-decoration: none;
-  text-align: center;
-}
-.results span {
-  color: var(--bg-layer-1);
-}
-.results--correct span {
-  background-color: var(--color-success);
-}
-.results--incorrect span {
-  background-color: var(--color-error);
-}
-
+/*==============================================================================
+  Heading
+  ============================================================================*/
 .h {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
   padding: 8px 0 0;
+}
+.h__title {
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.2;
+}
+.h__title--correct {
+  color: var(--color-success);
+}
+.h__title--incorrect {
+  color: var(--color-error);
 }
 .h__status {
   display: flex;
@@ -382,7 +308,7 @@ a.answers__item:hover:before {
 a.h__status {
   border: 2px solid var(--color-accent);
   background-color: var(--color-accent);
-  color: var(--bg-layer-1);
+  color: var(--color-bg-1);
   text-decoration: none;
 }
 a.h__status[href*="questions/1"] {

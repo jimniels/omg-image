@@ -1,15 +1,10 @@
 // TODO:
-// - fix links to blog posts
-// - add "x" for incorrect answers
+// - add link to blog post
 // - add og:image and other meta tags
 // - add favicon
 // - add 404 page
 // - refactor questions/:id/answers template
 {
-  // Can you do this and make the data global everywhere, even nested templates?
-  __data: questionsById.yaml
-
-
   index.html = templates/questions.$id.ori('1')
   
   questions = @map(__data, (question, questionId) => {
