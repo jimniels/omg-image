@@ -38,5 +38,13 @@
     2: Learning From The Best Guerrilla Marketing Campaigns
     3: The Blogging Strategy for Startups
     4: Top 10 Tips For Making a Presentation to C-Suite Executives
+6:
+  url: https://medium.engineering/kubernetes-infrastructure-at-medium-d9e2444932ef
+  answerId: "1"
+  answersById:
+    1: Kubernetes Infrastructure at Medium
+    2: The Future of Web Development
+    3: "Microservices: A Cautionary Tale"
+    4: Building aDynamoDB Data Source for Apache Spark
 # https://make.wordpress.org/core/2024/10/18/auto-sizes-for-lazy-loaded-images-in-wordpress-6-7/
 # answer: it's all of them, cause they're the same everywhere
