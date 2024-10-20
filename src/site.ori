@@ -7,7 +7,7 @@
 {
   index.html = templates/questions.$id.ori('1')
   
-  questions = @map(__data, (question, questionId) => {
+  questions = @map(questionsById.yaml, (question, questionId) => {
     index.html: templates/questions.$id.ori(@slash/remove(questionId))
 
     answers: @map(question/answersById, (answer, answerId) => {
