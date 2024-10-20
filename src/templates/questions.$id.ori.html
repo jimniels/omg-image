@@ -1,12 +1,13 @@
 <!-- 
 @param {Object} _
 @param {string} _/questionId
+@param {string} _/totalNumberOfQuestions
 @param {Array<{ id: string, text: string }>} _/answers
 -->
 
 <div class="h">
   <h1 class="h__title">Guess the article</h1>
-  <p class="h__status">${_/questionId} of ${@length(_/answers)}</p>
+  <p class="h__status">${_/questionId} of ${(_/totalNumberOfQuestions)}</p>
 </div>
 
 <div class="card social-preview social-preview--masked">

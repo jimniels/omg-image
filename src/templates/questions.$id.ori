@@ -7,8 +7,8 @@
   <link rel="preload" href="/questions/${qId}/answers/4/" as="fetch" />
   `,
   children: questions.$id.ori.html({
-    questionsById: questionsById.yaml,
     questionId: @slash/remove(qId),
+    totalNumberOfQuestions: @keys(questionsById.yaml)/length,
     answers: @map(
       questionsById.yaml(qId)/answersById,
       (a, aId) => ({
