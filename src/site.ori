@@ -1,8 +1,8 @@
 // TODO:
+// - add more questions
+// - get question/answer order right
 // - add link to blog post
 // - add og:image and other meta tags
-// - add favicon
-// - add 404 page
 // - refactor questions/:id/answers template
 {
   index.html = templates/questions.$id.ori('1')
@@ -14,6 +14,8 @@
       index.html: templates/questions.$id.answers.$id.ori(@slash/remove(questionId), @slash/remove(answerId))
     })
   })
+
+  404.html = templates/404.ori()
   
   index.css = styles/index.ori()
 

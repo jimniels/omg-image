@@ -9,7 +9,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>${@if(_/title, `${_/title} |`)} o(m)g:image</title>
+    <title>o(m)g:image${@if(_/title, ` | ${_/title}`)}</title>
     <link rel="stylesheet" href="/index.css" />
     <link
       rel="icon"
@@ -24,11 +24,6 @@
     <main>${_/children}</main>
     <footer>
       <h1><a href="/">${../svgs/logo-2.svg}</a></h1>
-      <!-- <p><strong>Can you guess the article from the image?</strong></p> -->
-      <!-- <p>
-        <a href="">Hot take</a>: every web page in the world doesn’t need an
-        image.
-      </p> -->
       <p>
         Questioning the notion that every web page in the world should be
         summarized by an image.<br />

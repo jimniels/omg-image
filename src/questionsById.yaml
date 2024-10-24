@@ -46,5 +46,13 @@
     2: The Future of Web Development
     3: "Microservices: A Cautionary Tale"
     4: Building aDynamoDB Data Source for Apache Spark
+7:
+  url: https://reactnative.dev/blog/2024/10/23/the-new-architecture-is-here
+  answerId: "1"
+  answersById:
+    1: The New Architecture is Here
+    2: "Frontend Development: A Beginner's Guide"
+    3: Divining the mysteries of the atomic nucleus
+    4: 8 Must-Read Articles for React Devs in 2024
 # https://make.wordpress.org/core/2024/10/18/auto-sizes-for-lazy-loaded-images-in-wordpress-6-7/
 # answer: it's all of them, cause they're the same everywhere

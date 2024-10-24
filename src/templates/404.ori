@@ -1,0 +1,13 @@
+=layout.ori.html({
+  title: "404",
+  children: `
+    <div style="min-height: 30vh; text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 1rem;">
+      <h1 style="font-weight: 700">
+        404: Not Found
+      </h1>
+      <p style="text-align: center; line-height: 1.3;">
+        We’re all looking for something — but yours isn’t here. <br /><a href="/">Go home</a>.
+      </p>
+    </div>
+  `
+})
