@@ -12,6 +12,11 @@ const __dirname = path.dirname(__filename);
  * @param {string} id - the id of the image file that will be saved
  */
 export default async function downloadOgImage(url, id) {
+  // Only try to download the image if we don't already have it
+  const exisitingFileName = id + ".jpg";
+  const filePath = path.resolve(__dirname, "../static/og-images");
+  if (fs.existsSync(filePath)) return;
+
   const ogImageUrl = await getOgImageUrl(url);
   if (!ogImageUrl) {
     console.error(
@@ -31,16 +36,17 @@ export default async function downloadOgImage(url, id) {
     urlExtension = ".jpg";
   }
   if (urlExtension !== ".jpg") {
-    console.log("Warning: og:image URL has non-jpg extension: ", ogImageUrl);
+    console.error("Error: og:image URL has non-jpg extension: ", ogImageUrl);
+    return;
   }
   if (!urlExtension) {
-    console.error("Failed to determine file extension from URL: ", ogImageUrl);
+    console.error(
+      "Error: Failed to determine file extension from URL: ",
+      ogImageUrl
+    );
     return;
   }
   const fileName = id + urlExtension;
-
-  const filePath = path.resolve(__dirname, "../static/og-images", fileName);
-  if (fs.existsSync(filePath)) return;
 
   fs.writeFileSync(filePath, Buffer.from(await blob.arrayBuffer()));
   return filePath;

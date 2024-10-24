@@ -54,5 +54,13 @@
     2: "Frontend Development: A Beginner's Guide"
     3: Divining the mysteries of the atomic nucleus
     4: 8 Must-Read Articles for React Devs in 2024
+8:
+  url: https://bsky.social/about/blog/09-18-2024-trust-safety-update
+  answerId: "1"
+  answersById:
+    1: Bluesky’s Current Efforts on Trust and Safety
+    2: Bluesky Announces Series A to Grow Network of 13M+ Users
+    3: New Anti-Toxicity Features on Bluesky
+    4: How to embed a Bluesky post on your website or blog
 # https://make.wordpress.org/core/2024/10/18/auto-sizes-for-lazy-loaded-images-in-wordpress-6-7/
 # answer: it's all of them, cause they're the same everywhere
