@@ -1,6 +1,7 @@
 1:
   url: https://slack.com/blog/productivity/the-key-to-building-high-performing-teams
   answerId: "1"
+  imgAlt: "A woman, wearing a white Dr Pepper jersey with the number 23, appears emotional and ecstatic as she stands on a football field during a competition. In front of her, there are footballs and large containers used for a throwing challenge. A cameraman captures her reaction, while cheerleaders and a crowd of spectators in the background cheer her on. The atmosphere is lively and celebratory, suggesting she may have won or completed a successful challenge."
   answersById:
     1: The Key to Building High-Performing Teams
     2: The Ultimate Guide to Developer Happiness
@@ -9,6 +10,7 @@
 2:
   url: https://venturebeat.com/automation/google-says-gemini-powered-automations-coming-to-workspace-next-month
   answerId: "1"
+  imgAlt: "An illustration depicting a nighttime scene in a shadowy alley. A futuristic robot with glowing blue eyes stands alongside a detective dressed in a classic trench coat and fedora. The two peek cautiously around the corner of a brick wall, seemingly investigating or hiding from something unseen. Dim streetlights cast an eerie glow over the rain-slicked alley, highlighting a parked car in the distance. The visual style blends elements of film noir with futuristic sci-fi."
   answersById:
     1: Google says Gemini-powered automations coming to Workspace next month
     2: How AI could help police predict crimes a week before they happen
@@ -17,6 +19,7 @@
 3:
   url: https://netflixtechblog.com/scalable-annotation-service-marken-f5ba9266d428
   answerId: "1"
+  imgAlt: "A group of masked figures stands in formation in a stark, brightly lit room with a curved ceiling. Each figure is dressed in a pink hooded jumpsuit and wears black gloves and black shoes, with a mask. The central figure, who appears to be in charge, is marked with a blue circle highlighting a particular detail."
   answersById:
     1: Scalable Annotation Service — Marken
     2: The Visual Language of Dystopian Imagery
@@ -25,6 +28,7 @@
 4:
   url: https://www.motherjones.com/environment/2024/10/scientists-alarmed-collapse-natural-carbon-sinks/
   answerId: "1"
+  imgAlt: "A scene of dense greenery along a calm river. Lush trees with various shades of green leaves grow densely along the riverbank, their branches extending outward over the water. The dense foliage creates a rich, almost impenetrable wall of greenery."
   answersById:
     1: Scientists Alarmed by Signs of Collapse in Earth’s Natural Carbon Sinks
     2: "Await-Tree: A Panacea for Observability in Async Rust"
@@ -33,6 +37,7 @@
 5:
   url: https://ehandbook.com/how-i-sold-my-business-for-maximum-value-c800360cbc1f
   answerId: "1"
+  imgAlt: "A group of professionals engaged in a collaborative meeting in a bright conference room. A woman leans over the table, pointing at a tablet with a stylus, while others attentively watch and listen. A man in a light gray suit stands behind her, seemingly offering guidance or input. The team, all dressed in business attire, appears to be  strategizing based on data on the tablet. [It is in the style of generic, corporate stock photography.]"
   answersById:
     1: How I Sold My Business for Maximum Value
     2: Learning From The Best Guerrilla Marketing Campaigns
@@ -41,6 +46,7 @@
 6:
   url: https://medium.engineering/kubernetes-infrastructure-at-medium-d9e2444932ef
   answerId: "1"
+  imgAlt: "A close-up view of a traditional wooden ship’s wheel, softly lit by the warm rays of the setting sun. In the (bokeh-style) background, the sea stretches out with elements of the dock visible in the immediate vicinity."
   answersById:
     1: Kubernetes Infrastructure at Medium
     2: The Future of Web Development
@@ -49,6 +55,7 @@
 7:
   url: https://reactnative.dev/blog/2024/10/23/the-new-architecture-is-here
   answerId: "1"
+  imgAlt: "A minimalist image of the well-known React logo (a stylized structure of an atom). The logo displays three elliptical orbits intersecting around a central dot. The logo stands against a solid black background."
   answersById:
     1: The New Architecture is Here
     2: "Frontend Development: A Beginner's Guide"
@@ -57,6 +64,7 @@
 8:
   url: https://bsky.social/about/blog/09-18-2024-trust-safety-update
   answerId: "1"
+  imgAlt: "A minimalist logo for “Bluesky” set on a gradient blue background that transitions from deep blue at the top to lighter blue at the bottom. The logo is a white butterfly icon with rounded wings and gentle curves. This glyph is positioned next to the word “Bluesky” in bold, modern typography."
   answersById:
     1: Bluesky’s Current Efforts on Trust and Safety
     2: Bluesky Announces Series A to Grow Network of 13M+ Users

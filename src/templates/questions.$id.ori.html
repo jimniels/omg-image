@@ -1,19 +1,12 @@
-<!-- 
-@param {Object} _
-@param {string} _/questionId
-@param {string} _/totalNumberOfQuestions
-@param {Array<{ id: string, text: string }>} _/answers
--->
-
 <div class="h">
   <h1 class="h__title">Guess the article</h1>
-  <p class="h__status">${_/questionId} of ${(_/totalNumberOfQuestions)}</p>
+  <p class="h__status">${_/$questionId} of ${(_/totalNumberOfQuestions)}</p>
 </div>
 
 <div class="card social-preview social-preview--masked">
   <img
-    src="/og-images/${_/questionId}.jpg"
-    alt=""
+    src="/og-images/${_/$questionId}.jpg"
+    alt="${_/imgAlt}"
     width="400"
     height="260"
     class="social-preview__image"
@@ -29,7 +22,7 @@
     ${@map(_/answers, (answer) => `
       <li>
         <a
-          href="/questions/${_/questionId}/answers/${answer/id}/"
+          href="/questions/${_/$questionId}/answers/${answer/id}/"
           class="answers__item answers__item--selectable">
           ${answer/text}
           ${../svgs/iconCircle.svg}

@@ -2,7 +2,6 @@
 // - add more questions
 // - get question/answer order right
 // - add link to blog post
-// - refactor questions/:id/answers template
 {
   index.html = templates/questions.$id.ori('1')
   

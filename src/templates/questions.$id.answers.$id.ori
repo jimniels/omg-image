@@ -1,16 +1,43 @@
-(qId, aId) => layout.ori.html({
-  __nextQuestionId: helpers/getNextQuestionId.js(qId, @keys(questionsById.yaml)/length),
+/**
+ * @param {string} $qId - The current question ID
+ * @param {string} $aId - The current answer ID
+ */
+($qId, $aId) => layout.ori.html({
+  __questionsById: questionsById.yaml,
+  __nextQuestionId: helpers/getNextQuestionId.js($qId, @keys(__questionsById(($qId)))/length),
   
-  title: `Question ${qId} | Answer ${aId}`,
+  title: `Question ${$qId} | Answer ${$aId}`,
   head: `
     <link rel="preload" href="/questions/${__nextQuestionId}/" as="fetch" />
     <link rel="preload" href="/og-images/${__nextQuestionId}.jpg" as="image" />
   `,
+
+  /**
+   * @param {string} $questionId
+   * @param {string} questionUrl
+   * @param {string} questionAnswer
+   * @param {string} imgAlt
+   * @param {string} nextQuestionId
+   * @param {boolean} isCorrect
+   * @param {Array<{
+   *   id: string,
+   *   text: string,
+   *   isCorrect: boolean,
+   *   isCurrent: boolean
+   * }>} answers
+   */
   children: questions.$id.answers.$id.ori.html({
-    questionsById: questionsById.yaml,
-    questionId: qId,
-    questionIdNext: __nextQuestionId,
-    answerId: aId,
-    isCorrect: @equals(questionsById.yaml(qId)/answerId, aId)
+    $questionId: $qId,
+    questionUrl: __questionsById($qId)/url,
+    questionAnswer: __questionsById($qId)/answersById(__questionsById($qId)/answerId),
+    nextQuestionId: __nextQuestionId,
+    imgAlt: __questionsById($qId)/imgAlt,
+    isCorrect: @equals(__questionsById($qId)/answerId, $aId),
+    answers: @map(__questionsById($qId)/answersById, (answer, answerId) => ({
+      id: @slash/remove(answerId),
+      text: answer,
+      isCorrect: @equals(id, __questionsById($qId)/answerId),
+      isCurrent: @equals(id, $aId),
+    })),
   })
 })

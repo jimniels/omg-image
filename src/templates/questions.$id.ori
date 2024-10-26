@@ -1,16 +1,25 @@
 (qId) => layout.ori.html({
+  __questionsById: questionsById.yaml,
+
   title: `Question ${qId}`,
   head: `
-  <link rel="preload" href="/questions/${qId}/answers/1/" as="fetch" />
-  <link rel="preload" href="/questions/${qId}/answers/2/" as="fetch" />
-  <link rel="preload" href="/questions/${qId}/answers/3/" as="fetch" />
-  <link rel="preload" href="/questions/${qId}/answers/4/" as="fetch" />
+    <link rel="preload" href="/questions/${qId}/answers/1/" as="fetch" />
+    <link rel="preload" href="/questions/${qId}/answers/2/" as="fetch" />
+    <link rel="preload" href="/questions/${qId}/answers/3/" as="fetch" />
+    <link rel="preload" href="/questions/${qId}/answers/4/" as="fetch" />
   `,
+  /**
+   * @param {string} questionId
+   * @param {number} totalNumberOfQuestions
+   * @param {string} imgAlt
+   * @param {Array<{ id: string, text: string }>} answers
+   */
   children: questions.$id.ori.html({
-    questionId: @slash/remove(qId),
-    totalNumberOfQuestions: @keys(questionsById.yaml)/length,
+    $questionId: @slash/remove(qId),
+    totalNumberOfQuestions: @keys(__questionsById)/length,
+    imgAlt: __questionsById(qId)/imgAlt,
     answers: @map(
-      questionsById.yaml(qId)/answersById,
+      __questionsById(qId)/answersById,
       (a, aId) => ({
         id: @slash/remove(aId),
         text: a

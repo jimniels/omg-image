@@ -1,64 +1,47 @@
-<!-- 
-@param {Object} _
-@param {string} _/questionsById - same as doing `src/questionsById.yaml`
-@param {string} _/questionId - the active in the URL, e.g. /question/:id
-@param {string?} _/answerId - the active answer in the URL, e.g. /questions/:id/answers/:id
-
-@param {string} _/questionIdNext - the next question in the sequence
-@param {boolean} _/isCorrect - whether the answer is correct or not for the given page
--->
-
-<div class="h ${@if(@equals(_/questionIdNext, '1'), 'h--end')}">
+<div class="h ${@if(@equals(_/nextQuestionId, '1'), 'h--end')}">
   <!-- prettier-ignore -->
   <h1 class="
     h__title
     h__title--${@if(_/isCorrect, 'correct', 'incorrect')}">
     ${@if(_/isCorrect, `Correct!`, `Incorrect`)}
   </h1>
-  <a href="/questions/${_/questionIdNext}/" class="h__status">
-    ${@if(@equals(_/questionIdNext, '1'), 'Start over', 'Next')}
+  <a href="/questions/${_/nextQuestionId}/" class="h__status">
+    ${@if(@equals(_/nextQuestionId, '1'), 'Start over', 'Next')}
   </a>
 </div>
 
 <div class="card">
-  <a href="${_/questionsById(_/questionId)/url}" class="social-preview">
+  <a href="${_/questionUrl}" class="social-preview">
     <img
-      src="/og-images/${_/questionId}.jpg"
-      alt=""
+      src="/og-images/${_/$questionId}.jpg"
+      alt="${_/imgAlt}"
       width="400"
       height="260"
       class="social-preview__image"
     />
     <div class="social-preview__content">
-      <p>
-        ${_/questionsById(_/questionId)/answersById(_/questionsById(_/questionId)/answerId)}
-      </p>
-      <cite
-        >${helpers/getDomainFromUrl.js(_/questionsById(_/questionId)/url)}</cite
-      >
+      <p>${_/questionAnswer}</p>
+      <cite>${helpers/getDomainFromUrl.js(_/questionUrl)}</cite>
     </div>
   </a>
 </div>
 
 <!-- prettier-ignore -->
 <ul class="card answers">
-    ${@map(
-      _/questionsById(_/questionId)/answersById,
-      (answer, answerId) => `
-        <li class="
-          answers__item
-          ${@if(@equals(@slash/remove(answerId), _/answerId), 'answers__item--current')}
-          ${@if(@equals(@slash/remove(answerId), _/questionsById(_/questionId)/answerId), 
-            'answers__item--correct', 
-            'answers__item--incorrect'
-            )}
-          ">
-          ${answer}
-          ${@if(@equals(@slash/remove(answerId), _/questionsById(_/questionId)/answerId), 
-            ../svgs/iconCircleCheck.svg,
-            @if(@equals(@slash/remove(answerId), _/answerId), ../svgs/iconCircleCross.svg)
+    ${@map(_/answers, (answer) => `
+      <li class="
+        answers__item
+        ${@if(answer/isCurrent, 'answers__item--current')}
+        ${@if(answer/isCorrect, 
+          'answers__item--correct', 
+          'answers__item--incorrect'
           )}
-        </li>
-      `
-    )}
+        ">
+        ${answer/text}
+        ${@if(answer/isCorrect, 
+          svgs/iconCircleCheck.svg,
+          @if(answer/isCurrent, svgs/iconCircleCross.svg)
+        )}
+      </li>
+    `)}
   </ul>
