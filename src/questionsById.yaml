@@ -79,5 +79,12 @@
     2: What Would You Ask If No One Could Judge You?
     3: How to Build AI Search With a Vector Database
     4: Building a DynamoDB Data Source for Apache Spark
-# https://make.wordpress.org/core/2024/10/18/auto-sizes-for-lazy-loaded-images-in-wordpress-6-7/
-# answer: it's all of them, cause they're the same everywhere
+10:
+  url: https://www.theinformation.com/articles/seven-acquisitions-that-could-happen-in-2025
+  answerId: "1"
+  imgAlt: ""
+  answersById:
+    1: Seven Acquisitions That Could Happen in 2025
+    2: Why Silicon Valley Is Divided
+    3: The 1’s and 0’s Underlying Generative Artwork
+    4: Hundreds of Tech Workers Affected in Recent Wave of Layoffs
