@@ -1,6 +1,25 @@
 <div class="h">
-  <h1 class="h__title">Guess the article</h1>
-  <p class="h__status">${_/$questionId} of ${(_/totalNumberOfQuestions)}</p>
+  <a
+    href="/questions/${_/prevQuestionId}/"
+    class="h__nav h__nav--prev"
+    title="Previous question"
+    ${@if(@equals(_/$questionId, '1'), 'style="opacity: 0; visibility: hidden"')}
+  >
+    ${svgs/iconChevronLeft.svg}
+  </a>
+  <h1 class="h__title">
+    What’s the article?
+    <span>${_/$questionId} / ${(_/totalNumberOfQuestions)}</span>
+  </h1>
+  <a
+    href="/questions/${_/nextQuestionId}/"
+    class="h__nav h__nav--next"
+    title="Next question"
+    style="opacity: 0; visibility: hidden"
+  >
+    ${svgs/iconChevronRight.svg}
+  </a>
+  <!-- <p class="h__nav">${_/$questionId} of ${(_/totalNumberOfQuestions)}</p> -->
 </div>
 
 <div class="card social-preview social-preview--masked">

@@ -17,6 +17,8 @@
   children: questions.$id.ori.html({
     $questionId: @slash/remove(qId),
     totalNumberOfQuestions: @keys(__questionsById)/length,
+    prevQuestionId: helpers/getPrevQuestionId.js(qId, @keys(__questionsById)/length),
+    nextQuestionId: helpers/getNextQuestionId.js(qId, @keys(__questionsById)/length),
     imgAlt: __questionsById(qId)/imgAlt,
     answers: @map(
       __questionsById(qId)/answersById,

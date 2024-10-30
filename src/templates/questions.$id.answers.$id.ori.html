@@ -1,12 +1,25 @@
 <div class="h ${@if(@equals(_/nextQuestionId, '1'), 'h--end')}">
+  <a
+    href="/questions/${_/$questionId}/"
+    class="h__nav h__nav--prev"
+    title="Reload question"
+  >
+    ${svgs/iconReload.svg}
+  </a>
   <!-- prettier-ignore -->
   <h1 class="
     h__title
-    h__title--${@if(_/isCorrect, 'correct', 'incorrect')}">
-    ${@if(_/isCorrect, `Correct!`, `Incorrect`)}
+    h__title--${@if(_/isCorrect, 'correctz', 'incorrectz')}">
+    ${@if(_/isCorrect, `Correct`, `Incorrect`)}
+    <span>${_/$questionId} / ${(_/totalNumberOfQuestions)}</span>
   </h1>
-  <a href="/questions/${_/nextQuestionId}/" class="h__status">
-    ${@if(@equals(_/nextQuestionId, '1'), 'Start over', 'Next')}
+  <a
+    href="/questions/${_/nextQuestionId}/"
+    class="h__nav h__nav--next"
+    title="${@if(@equals(_/nextQuestionId, '1'), 'Start over', 'Next question')}"
+  >
+    ${@if(@equals(_/nextQuestionId, '1'), svgs/iconReset.svg,
+    svgs/iconChevronRight.svg)}
   </a>
 </div>
 
