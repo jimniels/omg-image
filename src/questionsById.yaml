@@ -53,11 +53,11 @@
     3: "Microservices: A Cautionary Tale"
     4: Building aDynamoDB Data Source for Apache Spark
 7:
-  url: https://reactnative.dev/blog/2024/10/23/the-new-architecture-is-here
+  url: https://reactnative.dev/blog/2024/06/25/use-a-framework-to-build-react-native-apps
   answerId: "1"
   imgAlt: "A minimalist image of the well-known React logo (a stylized structure of an atom). The logo displays three elliptical orbits intersecting around a central dot. The logo stands against a solid black background."
   answersById:
-    1: The New Architecture is Here
+    1: Use a Framework to Build React Native Apps
     2: "Frontend Development: A Beginner's Guide"
     3: Divining the mysteries of the atomic nucleus
     4: 8 Must-Read Articles for React Devs in 2024
@@ -70,5 +70,14 @@
     2: Bluesky Announces Series A to Grow Network of 13M+ Users
     3: New Anti-Toxicity Features on Bluesky
     4: How to embed a Bluesky post on your website or blog
+9:
+  url: https://www.pinata.cloud/blog/how-to-build-a-simple-podcast-hosting-app/
+  answerId: "1"
+  imgAlt: "An abstract, multi-layered design composed of rounded shapes resembling a stylized flower. The shapes radiate outward in vibrant colors including green, orange, yellow, black, blue, pink, and purple, creating a bold and hypnotic effect."
+  answersById:
+    1: How to Build a Simple Podcast Hosting App
+    2: What Would You Ask If No One Could Judge You?
+    3: How to Build AI Search With a Vector Database
+    4: Building a DynamoDB Data Source for Apache Spark
 # https://make.wordpress.org/core/2024/10/18/auto-sizes-for-lazy-loaded-images-in-wordpress-6-7/
 # answer: it's all of them, cause they're the same everywhere
