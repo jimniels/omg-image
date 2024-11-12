@@ -1,6 +1,4 @@
 // TODO:
-// - add more questions
-// - get question/answer order right
 // - add link to blog post
 {
   index.html = templates/questions.$id.ori('1')

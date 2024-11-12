@@ -1,10 +1,10 @@
 1:
   url: https://slack.com/blog/productivity/the-key-to-building-high-performing-teams
-  answerId: "1"
+  answerId: "2"
   imgAlt: "A woman, wearing a white Dr Pepper jersey with the number 23, appears emotional and ecstatic as she stands on a football field during a competition. In front of her, there are footballs and large containers used for a throwing challenge. A cameraman captures her reaction, while cheerleaders and a crowd of spectators in the background cheer her on. The atmosphere is lively and celebratory, suggesting she may have won or completed a successful challenge."
   answersById:
-    1: The Key to Building High-Performing Teams
-    2: The Ultimate Guide to Developer Happiness
+    1: The Ultimate Guide to Developer Happiness
+    2: The Key to Building High-Performing Teams
     3: Woman Wins $500,000 at Georgia/Alabama Football Game
     4: A Guide to Sizing Wedding Rings
 2:
@@ -18,30 +18,30 @@
     4: Cohere updates APIs to make it easier for devs to switch from other models
 3:
   url: https://netflixtechblog.com/scalable-annotation-service-marken-f5ba9266d428
-  answerId: "1"
+  answerId: "4"
   imgAlt: "A group of masked figures stands in formation in a stark, brightly lit room with a curved ceiling. Each figure is dressed in a pink hooded jumpsuit and wears black gloves and black shoes, with a mask. The central figure, who appears to be in charge, is marked with a blue circle highlighting a particular detail."
   answersById:
-    1: Scalable Annotation Service — Marken
-    2: The Visual Language of Dystopian Imagery
-    3: "Editor Engine: Open-sourcing the V4 Alpha"
-    4: AI Homogenization Is Shaping The World
+    1: The Visual Language of Dystopian Imagery
+    2: "Editor Engine: Open-sourcing the V4 Alpha"
+    3: AI Homogenization Is Shaping The World
+    4: Scalable Annotation Service — Marken
 4:
   url: https://www.motherjones.com/environment/2024/10/scientists-alarmed-collapse-natural-carbon-sinks/
-  answerId: "1"
+  answerId: "2"
   imgAlt: "A scene of dense greenery along a calm river. Lush trees with various shades of green leaves grow densely along the riverbank, their branches extending outward over the water. The dense foliage creates a rich, almost impenetrable wall of greenery."
   answersById:
-    1: Scientists Alarmed by Signs of Collapse in Earth’s Natural Carbon Sinks
-    2: "Await-Tree: A Panacea for Observability in Async Rust"
+    1: "Await-Tree: A Panacea for Observability in Async Rust"
+    2: Scientists Alarmed by Signs of Collapse in Earth’s Natural Carbon Sinks
     3: Warming Climate Puts Global Forests at Risk of Widespread Decline, Experts Warn
     4: "75x faster: optimizing the Ion compiler backend"
 5:
   url: https://ehandbook.com/how-i-sold-my-business-for-maximum-value-c800360cbc1f
-  answerId: "1"
+  answerId: "3"
   imgAlt: "A group of professionals engaged in a collaborative meeting in a bright conference room. A woman leans over the table, pointing at a tablet with a stylus, while others attentively watch and listen. A man in a light gray suit stands behind her, seemingly offering guidance or input. The team, all dressed in business attire, appears to be  strategizing based on data on the tablet. [It is in the style of generic, corporate stock photography.]"
   answersById:
-    1: How I Sold My Business for Maximum Value
-    2: Learning From The Best Guerrilla Marketing Campaigns
-    3: The Blogging Strategy for Startups
+    1: Learning From The Best Guerrilla Marketing Campaigns
+    2: The Blogging Strategy for Startups
+    3: How I Sold My Business for Maximum Value
     4: Top 10 Tips For Making a Presentation to C-Suite Executives
 6:
   url: https://medium.engineering/kubernetes-infrastructure-at-medium-d9e2444932ef
@@ -54,37 +54,37 @@
     4: Building a DynamoDB Data Source for Apache Spark
 7:
   url: https://reactnative.dev/blog/2024/06/25/use-a-framework-to-build-react-native-apps
-  answerId: "1"
+  answerId: "4"
   imgAlt: "A minimalist image of the well-known React logo (a stylized structure of an atom). The logo displays three elliptical orbits intersecting around a central dot. The logo stands against a solid black background."
   answersById:
-    1: Use a Framework to Build React Native Apps
-    2: "Frontend Development: A Beginner's Guide"
-    3: Divining the mysteries of the atomic nucleus
-    4: 8 Must-Read Articles for React Devs in 2024
+    1: "Frontend Development: A Beginner's Guide"
+    2: Divining the mysteries of the atomic nucleus
+    3: 8 Must-Read Articles for React Devs in 2024
+    4: Use a Framework to Build React Native Apps
 8:
   url: https://bsky.social/about/blog/09-18-2024-trust-safety-update
-  answerId: "1"
+  answerId: "3"
   imgAlt: "A minimalist logo for “Bluesky” set on a gradient blue background that transitions from deep blue at the top to lighter blue at the bottom. The logo is a white butterfly icon with rounded wings and gentle curves. This glyph is positioned next to the word “Bluesky” in bold, modern typography."
   answersById:
-    1: Bluesky’s Current Efforts on Trust and Safety
-    2: Bluesky Announces Series A to Grow Network of 13M+ Users
-    3: New Anti-Toxicity Features on Bluesky
+    1: Bluesky Announces Series A to Grow Network of 13M+ Users
+    2: New Anti-Toxicity Features on Bluesky
+    3: Bluesky’s Current Efforts on Trust and Safety
     4: How to embed a Bluesky post on your website or blog
 9:
   url: https://www.pinata.cloud/blog/how-to-build-a-simple-podcast-hosting-app/
-  answerId: "1"
+  answerId: "2"
   imgAlt: "An abstract, multi-layered design composed of rounded shapes resembling a stylized flower. The shapes radiate outward in vibrant colors including green, orange, yellow, black, blue, pink, and purple, creating a bold and hypnotic effect."
   answersById:
-    1: How to Build a Simple Podcast Hosting App
-    2: What Would You Ask If No One Could Judge You?
+    1: What Would You Ask If No One Could Judge You?
+    2: How to Build a Simple Podcast Hosting App
     3: How to Build AI Search With a Vector Database
     4: Building a DynamoDB Data Source for Apache Spark
 10:
   url: https://www.theinformation.com/articles/seven-acquisitions-that-could-happen-in-2025
   answerId: "1"
-  imgAlt: ""
+  imgAlt: "A digitally enhanced view of the Golden Gate Bridge in San Francisco, with vibrant red hues on the bridge and purple and blue tones in the cityscape background. Binary code overlays the sky. The city’s skyline is visible beneath the bridge cables"
   answersById:
     1: Seven Acquisitions That Could Happen in 2025
     2: Why Silicon Valley Is Divided
     3: The 1’s and 0’s Underlying Generative Artwork
-    4: Hundreds of Tech Workers Affected in Recent Wave of Layoffs
+    4: Thousands of Tech Workers Affected in Recent Wave of Layoffs
