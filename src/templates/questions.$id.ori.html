@@ -3,7 +3,9 @@
     href="/questions/${_/prevQuestionId}/"
     class="h__nav h__nav--prev"
     title="Previous question"
-    ${@if(@equals(_/$questionId, '1'), 'style="opacity: 0; visibility: hidden"')}
+    ${@if(@equals(_/$questionId, '1'),
+    'style="opacity: 0; visibility: hidden" aria-hidden="true"',
+    'aria-label="Previous question"')}
   >
     ${svgs/iconChevronLeft.svg}
   </a>
@@ -15,6 +17,7 @@
     href="/questions/${_/nextQuestionId}/"
     class="h__nav h__nav--next"
     title="Next question"
+    aria-hidden="true"
     style="opacity: 0; visibility: hidden"
   >
     ${svgs/iconChevronRight.svg}

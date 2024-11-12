@@ -3,13 +3,12 @@
     href="/questions/${_/$questionId}/"
     class="h__nav h__nav--prev"
     title="Reload question"
+    aria-label="Reload question"
   >
     ${svgs/iconReload.svg}
   </a>
   <!-- prettier-ignore -->
-  <h1 class="
-    h__title
-    h__title--${@if(_/isCorrect, 'correctz', 'incorrectz')}">
+  <h1 class="h__title">
     ${@if(_/isCorrect, `Correct`, `Incorrect`)}
     <span>${_/$questionId} / ${(_/totalNumberOfQuestions)}</span>
   </h1>
@@ -17,6 +16,7 @@
     href="/questions/${_/nextQuestionId}/"
     class="h__nav h__nav--next"
     title="${@if(@equals(_/nextQuestionId, '1'), 'Start over', 'Next question')}"
+    aria-label="${@if(@equals(_/nextQuestionId, '1'), 'Start over', 'Next question')}"
   >
     ${@if(@equals(_/nextQuestionId, '1'), svgs/iconReset.svg,
     svgs/iconChevronRight.svg)}
