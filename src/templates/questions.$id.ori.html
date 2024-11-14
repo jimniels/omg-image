@@ -1,29 +1,9 @@
-<div class="h">
-  <a
-    href="/questions/${_/prevQuestionId}/"
-    class="h__nav h__nav--prev"
-    title="Previous question"
-    ${@if(@equals(_/$questionId, '1'),
-    'style="opacity: 0; visibility: hidden" aria-hidden="true"',
-    'aria-label="Previous question"')}
-  >
-    ${svgs/iconChevronLeft.svg}
-  </a>
-  <h1 class="h__title">
-    What’s the article?
-    <span>${_/$questionId} / ${(_/totalNumberOfQuestions)}</span>
-  </h1>
-  <a
-    href="/questions/${_/nextQuestionId}/"
-    class="h__nav h__nav--next"
-    title="Next question"
-    aria-hidden="true"
-    style="opacity: 0; visibility: hidden"
-  >
-    ${svgs/iconChevronRight.svg}
-  </a>
-  <!-- <p class="h__nav">${_/$questionId} of ${(_/totalNumberOfQuestions)}</p> -->
-</div>
+<header class="h">
+  <h1 class="h__title">What’s the article?</h1>
+</header>
+
+<!-- prettier-ignore -->
+${_/nav}
 
 <div class="card social-preview social-preview--masked">
   <img
@@ -41,14 +21,14 @@
 
 <!-- prettier-ignore -->
 <ul class="card answers">
-    ${@map(_/answers, (answer) => `
-      <li>
-        <a
-          href="/questions/${_/$questionId}/answers/${answer/id}/"
-          class="answers__item answers__item--selectable">
-          ${answer/text}
-          ${../svgs/iconCircle.svg}
-        </a>
-      </li>
-    `)}
-  </ul>
+  ${@map(_/answers, (answer) => `
+    <li>
+      <a
+        href="/questions/${_/$questionId}/answers/${answer/id}/"
+        class="answers__item answers__item--selectable">
+        ${answer/text}
+        ${../svgs/iconCircle.svg}
+      </a>
+    </li>
+  `)}
+</ul>

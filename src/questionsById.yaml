@@ -79,12 +79,12 @@
     2: How to Build a Simple Podcast Hosting App
     3: How to Build AI Search With a Vector Database
     4: Building a DynamoDB Data Source for Apache Spark
-10:
-  url: https://www.theinformation.com/articles/seven-acquisitions-that-could-happen-in-2025
-  answerId: "1"
-  imgAlt: "A digitally enhanced view of the Golden Gate Bridge in San Francisco, with vibrant red hues on the bridge and purple and blue tones in the cityscape background. Binary code overlays the sky. The city’s skyline is visible beneath the bridge cables"
-  answersById:
-    1: Seven Acquisitions That Could Happen in 2025
-    2: Why Silicon Valley Is Divided
-    3: The 1’s and 0’s Underlying Generative Artwork
-    4: Thousands of Tech Workers Affected in Recent Wave of Layoffs
+# 10:
+#   url: https://www.theinformation.com/articles/seven-acquisitions-that-could-happen-in-2025
+#   answerId: "1"
+#   imgAlt: "A digitally enhanced view of the Golden Gate Bridge in San Francisco, with vibrant red hues on the bridge and purple and blue tones in the cityscape background. Binary code overlays the sky. The city’s skyline is visible beneath the bridge cables"
+#   answersById:
+#     1: Seven Acquisitions That Could Happen in 2025
+#     2: Why Silicon Valley Is Divided
+#     3: The 1’s and 0’s Underlying Generative Artwork
+#     4: Thousands of Tech Workers Affected in Recent Wave of Layoffs

@@ -4,9 +4,14 @@
  */
 ($qId, $aId) => layout.ori.html({
   __questionsById: questionsById.yaml,
+  __prevQuestionId: helpers/getPrevQuestionId.js($qId, @keys(__questionsById)/length),
   __nextQuestionId: helpers/getNextQuestionId.js($qId, @keys(__questionsById)/length),
+  __isCorrect: @equals(__questionsById($qId)/answerId, $aId),
   
+  $qId,
+  $aId,
   title: `Question ${$qId} | Answer ${$aId}`,
+  isCorrect: __isCorrect, // __isCorrect,
   head: `
     <link rel="preload" href="/questions/${__nextQuestionId}/" as="fetch" />
     <link rel="preload" href="/og-images/${__nextQuestionId}.jpg" as="image" />
@@ -34,7 +39,16 @@
     nextQuestionId: __nextQuestionId,
     totalNumberOfQuestions: @keys(__questionsById)/length,
     imgAlt: __questionsById($qId)/imgAlt,
-    isCorrect: @equals(__questionsById($qId)/answerId, $aId),
+    isCorrect: __isCorrect,
+    nav: nav.ori.html({
+      questions: @map(__questionsById, (question, id) => ({
+        id: id,
+        isCurrentPage: @equals(id, $qId),
+      })),
+      
+      prevQuestionId: __prevQuestionId,
+      nextQuestionId: __nextQuestionId,
+    }),
     answers: @map(__questionsById($qId)/answersById, (answer, answerId) => ({
       id: @slash/remove(answerId),
       text: answer,

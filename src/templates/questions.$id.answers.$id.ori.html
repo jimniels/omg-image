@@ -1,4 +1,17 @@
-<div class="h ${@if(@equals(_/nextQuestionId, '1'), 'h--end')}">
+<header class="h">
+  <!-- prettier-ignore -->
+  <h1 class="h__title">
+    ${@if(_/isCorrect, `You got it!`, `Missed that one.`)}
+  </h1>
+</header>
+
+<!-- prettier-ignore -->
+${_/nav}
+
+<div
+  class="h ${@if(@equals(_/nextQuestionId, '1'), 'h--end')}"
+  style="display: none"
+>
   <a
     href="/questions/${_/$questionId}/"
     class="h__nav h__nav--prev"
@@ -7,11 +20,7 @@
   >
     ${svgs/iconReload.svg}
   </a>
-  <!-- prettier-ignore -->
-  <h1 class="h__title">
-    ${@if(_/isCorrect, `Correct`, `Incorrect`)}
-    <span>${_/$questionId} / ${(_/totalNumberOfQuestions)}</span>
-  </h1>
+
   <a
     href="/questions/${_/nextQuestionId}/"
     class="h__nav h__nav--next"

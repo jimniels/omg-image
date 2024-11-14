@@ -3,9 +3,20 @@
 @param {string} _/title
 @param {string} _/head
 @param {string} _/children
+@param {string} _/$qId
+@param {string?} _/$aId
+@param {boolean?} _/isCorrect
+
 -->
 <!DOCTYPE html>
-<html lang="en">
+<html
+  lang="en"
+  data-question="${_/$qId}"
+  ${@if(_/$aId, `
+    data-answer="${_/$aId}"
+    data-answer-is-correct="${@if(_/isCorrect, 'true', 'false')}"
+  `)}
+>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />

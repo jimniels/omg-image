@@ -1,8 +1,15 @@
+/* =============================================================================
+   Enable page transitions
+   ========================================================================== */
 @media (prefers-reduced-motion: no-preference) {
   @view-transition {
     navigation: auto;
   }
 }
+
+/* =============================================================================
+   Answer -> New Question social preview
+   ========================================================================== */
 
 /* Only transition when you go from answer -> new question */
 a.social-preview,
@@ -27,6 +34,22 @@ a.social-preview,
   to {
     opacity: 0;
   }
+}
+
+/* =============================================================================
+   Nav highlight
+   ========================================================================== */
+
+[aria-current="page"]:after {
+  view-transition-name: current-page;
+}
+
+/* Old stuff going out */
+::view-transition-old(current-page) {
+}
+
+/* New stuff coming in */
+::view-transition-new(current-page) {
 }
 
 /* Playing with shaking the title when you're wrong

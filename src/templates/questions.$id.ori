@@ -1,12 +1,13 @@
-(qId) => layout.ori.html({
+($qId) => layout.ori.html({
   __questionsById: questionsById.yaml,
 
-  title: `Question ${qId}`,
+  $qId,
+  title: `Question ${$qId}`,
   head: `
-    <link rel="preload" href="/questions/${qId}/answers/1/" as="fetch" />
-    <link rel="preload" href="/questions/${qId}/answers/2/" as="fetch" />
-    <link rel="preload" href="/questions/${qId}/answers/3/" as="fetch" />
-    <link rel="preload" href="/questions/${qId}/answers/4/" as="fetch" />
+    <link rel="preload" href="/questions/${$qId}/answers/1/" as="fetch" />
+    <link rel="preload" href="/questions/${$qId}/answers/2/" as="fetch" />
+    <link rel="preload" href="/questions/${$qId}/answers/3/" as="fetch" />
+    <link rel="preload" href="/questions/${$qId}/answers/4/" as="fetch" />
   `,
   /**
    * @param {string} questionId
@@ -15,17 +16,28 @@
    * @param {Array<{ id: string, text: string }>} answers
    */
   children: questions.$id.ori.html({
-    $questionId: @slash/remove(qId),
+    __prevQuestionId: helpers/getPrevQuestionId.js($qId, @keys(__questionsById)/length),
+    __nextQuestionId: helpers/getNextQuestionId.js($qId, @keys(__questionsById)/length),
+    $questionId: @slash/remove($qId),
     totalNumberOfQuestions: @keys(__questionsById)/length,
-    prevQuestionId: helpers/getPrevQuestionId.js(qId, @keys(__questionsById)/length),
-    nextQuestionId: helpers/getNextQuestionId.js(qId, @keys(__questionsById)/length),
-    imgAlt: __questionsById(qId)/imgAlt,
+    prevQuestionId: __prevQuestionId,
+    nextQuestionId: __nextQuestionId,
+    imgAlt: __questionsById($qId)/imgAlt,
     answers: @map(
-      __questionsById(qId)/answersById,
+      __questionsById($qId)/answersById,
       (a, aId) => ({
         id: @slash/remove(aId),
         text: a
       })
-    )
+    ),
+    nav: nav.ori.html({
+      questions: @map(__questionsById, (question, id) => ({
+        id: id,
+        isCurrentPage: @equals(id, $qId),
+      })),
+      
+      prevQuestionId: __prevQuestionId,
+      nextQuestionId: __nextQuestionId,
+    })
   })
 })
