@@ -294,24 +294,11 @@ a.answers__item:hover:before {
   flex-direction: column;
   align-items: center;
 }
-.h__title__status {
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--color-text-muted);
-}
-.h__title--correct {
+[data-answer-is-correct="true"] .h__title {
   color: var(--color-success);
 }
-.h__title--incorrect {
+[data-answer-is-correct="false"] .h__title {
   color: var(--color-error);
-}
-.h__title__status__accuracy {
-  color: var(--color-success);
-}
-.h__title__status__accuracy::before {
-  content: "·";
-  margin-left: 4px;
-  margin-right: 4px;
 }
 
 /*==============================================================================
@@ -368,6 +355,7 @@ a.answers__item:hover:before {
   align-items: center;
   justify-content: center;
   position: relative;
+  font-size: 14px;
 }
 .nav__number[aria-current="page"]:after {
   content: "";

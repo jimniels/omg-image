@@ -18,12 +18,12 @@ a.social-preview,
 }
 
 /* Old stuff going out */
-::view-transition-old(new-question) {
+::view-transition-old(social-preview) {
   animation: fade 0.5s linear forwards;
 }
 
 /* New stuff coming in */
-::view-transition-new(new-question) {
+::view-transition-new(social-preview) {
   animation: fade 0.7s linear reverse;
 }
 
