@@ -97,3 +97,12 @@
     2: "SuperAnnotate helps companies manage their AI datasets"
     3: "Network infrastructure evolution: What next for OTN switching?"
     4: "A popular technique to make AI more efficient has drawbacks"
+12:
+  url: https://dev.to/stuffbreaker/web-components-and-ssr-2024-edition-1nel
+  answerId: "4"
+  imgAlt: "Colorful flat design illustration of a variety of digital user interface elements, including mobile screens, app icons, charts, buttons, email envelopes, and media controls, arranged in a grid on a bright blue background."
+  answersById:
+    1: "Navigating the nuances of building a device lab"
+    2: "Responsive Web Design: What It Is And How To Use It"
+    3: "From LEGO Bricks to Data Blocks: Adventures with PromptQL"
+    4: "Web Components and SSR - 2024 Edition"
