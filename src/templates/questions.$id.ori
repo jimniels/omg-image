@@ -1,5 +1,6 @@
 ($qId) => layout.ori.html({
   __questionsById: questionsById.yaml,
+  __question: __questionsById($qId),
 
   $qId,
   title: `Question ${$qId}`,
@@ -9,35 +10,43 @@
     <link rel="preload" href="/questions/${$qId}/answers/3/" as="fetch" />
     <link rel="preload" href="/questions/${$qId}/answers/4/" as="fetch" />
   `,
-  /**
-   * @param {string} questionId
-   * @param {number} totalNumberOfQuestions
-   * @param {string} imgAlt
-   * @param {Array<{ id: string, text: string }>} answers
-   */
-  children: questions.$id.ori.html({
-    __prevQuestionId: helpers/getPrevQuestionId.js($qId, @keys(__questionsById)/length),
-    __nextQuestionId: helpers/getNextQuestionId.js($qId, @keys(__questionsById)/length),
-    $questionId: @slash/remove($qId),
+
+  header: header.ori.html({
+    title: `Guess the article`,
+    currentQuestionId: $qId,
     totalNumberOfQuestions: @keys(__questionsById)/length,
-    prevQuestionId: __prevQuestionId,
-    nextQuestionId: __nextQuestionId,
-    imgAlt: __questionsById($qId)/imgAlt,
-    answers: @map(
-      __questionsById($qId)/answersById,
-      (a, aId) => ({
-        id: @slash/remove(aId),
-        text: a
-      })
-    ),
-    nav: nav.ori.html({
-      questions: @map(__questionsById, (question, id) => ({
-        id: id,
-        isCurrentPage: @equals(id, $qId),
-      })),
-      
-      prevQuestionId: __prevQuestionId,
-      nextQuestionId: __nextQuestionId,
-    })
-  })
+    // previousQuestionId: __prevQuestionId,
+    // nextQuestionId: __nextQuestionId,
+  }),
+
+  children: `
+    <div class="card">
+      <div class="social-preview social-preview--masked">
+        <img
+          src="/og-images/${$qId}.jpg"
+          alt="${__question/imgAlt}"
+          width="400"
+          height="260"
+          class="social-preview__image"
+        />
+        <div class="social-preview__content">
+          <p>???</p>
+          <cite>???</cite>
+        </div>
+      </div>
+
+      <ul class="card answers">
+        ${@map(__question/answersById, (answer, answerId) => `
+          <li>
+            <a
+              href="/questions/${$qId}/answers/${@slash/remove(answerId)}/"
+              class="answers__item answers__item--selectable">
+              ${answer}
+              ${svgs/iconCircle.svg}
+            </a>
+          </li>
+        `)}
+      </ul>
+    </div>
+  `
 })

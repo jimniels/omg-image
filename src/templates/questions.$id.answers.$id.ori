@@ -7,6 +7,8 @@
   __prevQuestionId: helpers/getPrevQuestionId.js($qId, @keys(__questionsById)/length),
   __nextQuestionId: helpers/getNextQuestionId.js($qId, @keys(__questionsById)/length),
   __isCorrect: @equals(__questionsById($qId)/answerId, $aId),
+  __totalNumberOfQuestions: @keys(__questionsById)/length,
+  __question: __questionsById($qId),
   
   $qId,
   $aId,
@@ -16,6 +18,12 @@
     <link rel="preload" href="/questions/${__nextQuestionId}/" as="fetch" />
     <link rel="preload" href="/og-images/${__nextQuestionId}.jpg" as="image" />
   `,
+  header: header.ori.html({
+    title: @if(__isCorrect, `Correct`, `Incorrect`),
+    currentQuestionId: $qId,
+    totalNumberOfQuestions: __totalNumberOfQuestions,
+    nextQuestionId: __nextQuestionId,
+  }),
 
   /**
    * @param {string} $questionId
@@ -32,28 +40,68 @@
    *   isCurrent: boolean
    * }>} answers
    */
-  children: questions.$id.answers.$id.ori.html({
-    $questionId: $qId,
-    questionUrl: __questionsById($qId)/url,
-    questionAnswer: __questionsById($qId)/answersById(__questionsById($qId)/answerId),
-    nextQuestionId: __nextQuestionId,
-    totalNumberOfQuestions: @keys(__questionsById)/length,
-    imgAlt: __questionsById($qId)/imgAlt,
-    isCorrect: __isCorrect,
-    nav: nav.ori.html({
-      questions: @map(__questionsById, (question, id) => ({
-        id: id,
-        isCurrentPage: @equals(id, $qId),
-      })),
+  // children: questions.$id.answers.$id.ori.html({
+  //   $questionId: $qId,
+  //   questionUrl: __questionsById($qId)/url,
+  //   questionAnswer: __questionsById($qId)/answersById(__questionsById($qId)/answerId),
+  //   nextQuestionId: __nextQuestionId,
+  //   totalNumberOfQuestions: __totalNumberOfQuestions,
+  //   imgAlt: __questionsById($qId)/imgAlt,
+  //   isCorrect: __isCorrect,
+  //   nav: nav.ori.html({
+  //     questions: @map(__questionsById, (question, id) => ({
+  //       id: id,
+  //       isCurrentPage: @equals(id, $qId),
+  //     })),
       
-      prevQuestionId: __prevQuestionId,
-      nextQuestionId: __nextQuestionId,
-    }),
-    answers: @map(__questionsById($qId)/answersById, (answer, answerId) => ({
-      id: @slash/remove(answerId),
-      text: answer,
-      isCorrect: @equals(id, __questionsById($qId)/answerId),
-      isCurrent: @equals(id, $aId),
-    })),
-  })
+  //     prevQuestionId: __prevQuestionId,
+  //     nextQuestionId: __nextQuestionId,
+  //   }),
+    
+  // })
+
+  __answers: @map(__questionsById($qId)/answersById, (answer, answerId) => ({
+    id: @slash/remove(answerId),
+    text: answer,
+    isCorrect: @equals(id, __questionsById($qId)/answerId),
+    isCurrent: @equals(id, $aId),
+  })),
+  children: `
+    <div class="card">
+      <a href="${__question/url}" class="social-preview">
+        <img
+          src="/og-images/${$qId}.jpg"
+          alt="${__question/imgAlt}"
+          width="400"
+          height="260"
+          class="social-preview__image"
+        />
+        <div class="social-preview__content">
+          <p>${__question/answersById(__question/answerId)}</p>
+          <cite>${helpers/getDomainFromUrl.js(__question/url)}</cite>
+        </div>
+      </a>
+    
+
+      <!-- prettier-ignore -->
+      <ul class="card answers">
+          ${@map(__answers, (answer) => `
+            <li class="
+              answers__item
+              ${@if(answer/isCurrent, 'answers__item--current')}
+              ${@if(answer/isCorrect, 
+                'answers__item--correct', 
+                'answers__item--incorrect'
+                )}
+              ">
+              ${answer/text}
+              ${@if(answer/isCorrect, 
+                svgs/iconCircleCheck.svg,
+                @if(answer/isCurrent, svgs/iconCircleCross.svg)
+              )}
+            </li>
+          `)}
+        </ul>
+    </div>
+  `
 })

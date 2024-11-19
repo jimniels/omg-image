@@ -79,12 +79,21 @@
     2: How to Build a Simple Podcast Hosting App
     3: How to Build AI Search With a Vector Database
     4: Building a DynamoDB Data Source for Apache Spark
-# 10:
-#   url: https://www.theinformation.com/articles/seven-acquisitions-that-could-happen-in-2025
-#   answerId: "1"
-#   imgAlt: "A digitally enhanced view of the Golden Gate Bridge in San Francisco, with vibrant red hues on the bridge and purple and blue tones in the cityscape background. Binary code overlays the sky. The city’s skyline is visible beneath the bridge cables"
-#   answersById:
-#     1: Seven Acquisitions That Could Happen in 2025
-#     2: Why Silicon Valley Is Divided
-#     3: The 1’s and 0’s Underlying Generative Artwork
-#     4: Thousands of Tech Workers Affected in Recent Wave of Layoffs
+10:
+  url: https://www.theinformation.com/articles/seven-acquisitions-that-could-happen-in-2025
+  answerId: "1"
+  imgAlt: "A digitally enhanced view of the Golden Gate Bridge in San Francisco, with vibrant red hues on the bridge and purple and blue tones in the cityscape background. Binary code overlays the sky. The city’s skyline is visible beneath the bridge cables"
+  answersById:
+    1: Seven Acquisitions That Could Happen in 2025
+    2: Why Silicon Valley Is Divided
+    3: The 1’s and 0’s Underlying Generative Artwork
+    4: Thousands of Tech Workers Affected in Recent Wave of Layoffs
+11:
+  url: https://techcrunch.com/2024/11/18/superannotate-helps-companies-manage-their-ai-data-sets/
+  answerId: "2"
+  imgAlt: "Abstract visualization of a 3D network, showcasing interconnected nodes with glowing pink and blue spheres connected by thin lines on a dark gradient background, symbolizing communication and technology."
+  answersById:
+    1: "Sequence modeling and design from molecular to genome scale"
+    2: "SuperAnnotate helps companies manage their AI datasets"
+    3: "Network infrastructure evolution: What next for OTN switching?"
+    4: "A popular technique to make AI more efficient has drawbacks"

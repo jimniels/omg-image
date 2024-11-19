@@ -1,0 +1,28 @@
+() => layout.ori.html({
+  __questionsById: questionsById.yaml,
+
+  title: `Questions`,
+  head: ``,
+
+  header: `
+    <header class="header">
+      <h1 class="header__title">Questions</h1>
+      <p class="header__status">12 total</p>
+    </header>
+  `,
+
+  
+  __questions: @map(__questionsById, (question, id) => ({
+    id: id,
+    isCurrentPage: @equals(id, $qId),
+  })),
+  children: `
+    <ul class="q-list">
+      ${@map(__questions, (question) => `
+        <li>
+          <a href="/questions/${question/id}/">${question/id}</a>
+        </li>
+      `)}
+    </ul>
+  `
+})

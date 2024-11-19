@@ -19,7 +19,7 @@ a.social-preview,
 
 /* Old stuff going out */
 ::view-transition-old(social-preview) {
-  animation: fade 0.5s linear forwards;
+  animation: fade 0.3s linear forwards;
 }
 
 /* New stuff coming in */

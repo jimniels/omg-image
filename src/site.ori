@@ -3,13 +3,16 @@
 {
   index.html = templates/questions.$id.ori('1')
   
-  questions = @map(questionsById.yaml, (question, questionId) => {
-    index.html: templates/questions.$id.ori(@slash/remove(questionId))
+  questions = {
+    index.html: templates/questions.ori(),
+    ...@map(questionsById.yaml, (question, questionId) => {
+      index.html: templates/questions.$id.ori(@slash/remove(questionId))
 
-    answers: @map(question/answersById, (answer, answerId) => {
-      index.html: templates/questions.$id.answers.$id.ori(@slash/remove(questionId), @slash/remove(answerId))
+      answers: @map(question/answersById, (answer, answerId) => {
+        index.html: templates/questions.$id.answers.$id.ori(@slash/remove(questionId), @slash/remove(answerId))
+      })
     })
-  })
+  }
 
   404.html = templates/404.ori()
   
