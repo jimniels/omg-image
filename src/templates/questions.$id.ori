@@ -19,6 +19,12 @@
     // nextQuestionId: __nextQuestionId,
   }),
 
+  answers: tree:map(__question/answersById, (answer, answerId) => ({
+    id: origami:slash/remove(answerId),
+    isCorrect: calc:equals(__question/answerId, id),
+    text: answer,
+  })),
+
   children: `
     <div class="card">
       <div class="social-preview social-preview--masked">
@@ -36,17 +42,41 @@
       </div>
 
       <ul class="card answers">
-        ${tree:map(__question/answersById, (answer, answerId) => `
+        ${tree:map(answers, (answer) => `
           <li>
             <a
-              href="/questions/${$qId}/answers/${origami:slash/remove(answerId)}/"
-              class="answers__item answers__item--selectable">
-              ${answer}
+              href="/questions/${$qId}/answers/${answer/id}/"
+              class="answers__item answers__item--selectable"
+              data-question-id="${$qId}"
+              data-answer-id="${answer/id}"
+              data-answer-is-correct="${calc:if(answer/isCorrect, 'true', 'false')}"
+            >
+              ${answer/text}
               ${svgs/iconCircle.svg}
             </a>
           </li>
         `)}
       </ul>
     </div>
+
+    <script>
+      /** @type {Record<string, { answerId: string, wasCorrect: boolean }>} */
+      let questionResultsById = JSON.parse(sessionStorage.getItem('questionResultsById') || '{}');
+
+      document.addEventListener('click', (e) => {
+        if (e.target.classList.contains('answers__item--selectable')) {
+          
+          const el = e.target;
+          questionResultsById = {
+            ...questionResultsById,
+            [el.dataset.questionId]: {
+              answerId: el.dataset.answerId,
+              wasCorrect: el.dataset.answerIsCorrect === 'true',
+            },
+          }
+          sessionStorage.setItem('questionResultsById', JSON.stringify(questionResultsById));
+        }
+      });
+    </script>
   `
 })

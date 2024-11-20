@@ -16,11 +16,48 @@
     <ul class="q-list">
       ${tree:map(__ids, (id) => `
         <li>
-          <a href="/questions/${id}/">
+          <a href="/questions/${id}/" class="q-list__item">
             ${id}
           </a>
         </li>
       `)}
     </ul>
+    <button
+      type="reset"
+      style="
+        margin-top: 8px;
+        appearance: none;
+        border: none;
+        background: none;
+        cursor: pointer;
+        font-size: 1rem;
+        opacity: 0;
+        visibility: hidden;
+      "
+    >
+      Reset results
+    </button>
+    <script>
+      const $qList = document.querySelector('.q-list');
+      
+      /** @type {Record<string, { answerId: string, wasCorrect: boolean }>} */
+      const questionResultsById = JSON.parse(sessionStorage.getItem('questionResultsById') || '{}');
+      
+      Object.entries(questionResultsById).forEach(([id, result]) => {
+        const $el = $qList.querySelector('a[href="/questions/' + id + '/"]');
+        const href = $el.getAttribute('href');
+        $el.dataset.result = result.wasCorrect ? 'correct' : 'incorrect';
+        $el.setAttribute('href', href + 'answers/' + result.answerId + '/');
+      });
+
+
+      const $btn = document.querySelector('button[type="reset"]');
+      $btn.style.opacity = '1';
+      $btn.style.visibility = 'visible';
+      $btn.addEventListener('click', () => {
+        sessionStorage.removeItem('questionResultsById');
+        window.location.reload();
+      });
+    </script>
   `
 })
