@@ -14,7 +14,7 @@
   header: header.ori.html({
     title: `Guess the article`,
     currentQuestionId: $qId,
-    totalNumberOfQuestions: @keys(__questionsById)/length,
+    totalNumberOfQuestions: tree:keys(__questionsById)/length,
     // previousQuestionId: __prevQuestionId,
     // nextQuestionId: __nextQuestionId,
   }),
@@ -36,10 +36,10 @@
       </div>
 
       <ul class="card answers">
-        ${@map(__question/answersById, (answer, answerId) => `
+        ${tree:map(__question/answersById, (answer, answerId) => `
           <li>
             <a
-              href="/questions/${$qId}/answers/${@slash/remove(answerId)}/"
+              href="/questions/${$qId}/answers/${origami:slash/remove(answerId)}/"
               class="answers__item answers__item--selectable">
               ${answer}
               ${svgs/iconCircle.svg}

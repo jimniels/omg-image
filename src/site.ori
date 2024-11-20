@@ -5,11 +5,11 @@
   
   questions = {
     index.html: templates/questions.ori(),
-    ...@map(questionsById.yaml, (question, questionId) => {
-      index.html: templates/questions.$id.ori(@slash/remove(questionId))
+    ...tree:map(questionsById.yaml, (question, questionId) => {
+      index.html: templates/questions.$id.ori(origami:slash/remove(questionId))
 
-      answers: @map(question/answersById, (answer, answerId) => {
-        index.html: templates/questions.$id.answers.$id.ori(@slash/remove(questionId), @slash/remove(answerId))
+      answers: tree:map(question/answersById, (answer, answerId) => {
+        index.html: templates/questions.$id.answers.$id.ori(origami:slash/remove(questionId), origami:slash/remove(answerId))
       })
     })
   }

@@ -26,7 +26,7 @@
     ${svgs/iconChevronRight.svg}
   </a>
 
-  ${@if(_/nextQuestionId, `<a
+  ${calc:if(_/nextQuestionId, `<a
     href="/questions/${_/nextQuestionId}/"
     class="header__next"
     >${svgs/iconArrowRight.svg}</a

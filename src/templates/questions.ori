@@ -1,5 +1,6 @@
 () => layout.ori.html({
   __questionsById: questionsById.yaml,
+  __ids: tree:map(tree:keys(__questionsById), (id) => origami:slash/remove(id)),
 
   title: `Questions`,
   head: ``,
@@ -11,16 +12,13 @@
     </header>
   `,
 
-  
-  __questions: @map(__questionsById, (question, id) => ({
-    id: id,
-    isCurrentPage: @equals(id, $qId),
-  })),
   children: `
     <ul class="q-list">
-      ${@map(__questions, (question) => `
+      ${tree:map(__ids, (id) => `
         <li>
-          <a href="/questions/${question/id}/">${question/id}</a>
+          <a href="/questions/${id}/">
+            ${id}
+          </a>
         </li>
       `)}
     </ul>
