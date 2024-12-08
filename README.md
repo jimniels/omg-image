@@ -1,4 +1,4 @@
-# [o(m)g:image](https://omgimage.jim-nielsen.com/)
+# [o(m)g:image](https://omgimg.jim-nielsen.com/)
 
 Local dev:
 
