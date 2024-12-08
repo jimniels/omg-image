@@ -37,6 +37,36 @@ a.social-preview .social-preview__content,
 }
 
 /* =============================================================================
+   Next button
+   ========================================================================== */
+
+.header__next {
+  view-transition-name: hidden-next;
+}
+
+/* Old stuff going out */
+::view-transition-old(hidden-next) {
+  animation: pop 0.3s ease-in-out forwards;
+}
+
+/* New stuff coming in */
+::view-transition-new(hidden-next) {
+  animation: pop 0.3s ease-in-out reverse;
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+/* =============================================================================
    Nav highlight
    ========================================================================== */
 
