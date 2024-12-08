@@ -12,8 +12,8 @@
    ========================================================================== */
 
 /* Only transition when you go from answer -> new question */
-a.social-preview,
-.social-preview--masked {
+a.social-preview .social-preview__content,
+.social-preview--masked .social-preview__content {
   view-transition-name: social-preview;
 }
 
