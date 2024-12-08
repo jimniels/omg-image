@@ -1,5 +1,3 @@
-// TODO:
-// - add link to blog post
 {
   index.html = templates/questions.$id.ori('1')
   
