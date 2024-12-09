@@ -1,4 +1,9 @@
-# [o(m)g:image](https://omgimg.jim-nielsen.com/)
+# o(m)g:image
+
+Project:
+
+- Website https://omgimg.jim-nielsen.com/
+- Blog post https://blog.jim-nielsen.com/2024/omgimg/
 
 Local dev:
 
