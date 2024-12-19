@@ -13,7 +13,7 @@
   $qId,
   $aId,
   title: `Question ${$qId} | Answer ${$aId}`,
-  isCorrect: __isCorrect, // __isCorrect,
+  isCorrect: __isCorrect,
   head: `
     <link rel="preload" href="/questions/${__nextQuestionId}/" as="fetch" />
     <link rel="preload" href="/og-images/${__nextQuestionId}.jpg" as="image" />
@@ -24,41 +24,6 @@
     totalNumberOfQuestions: __totalNumberOfQuestions,
     nextQuestionId: __nextQuestionId,
   }),
-
-  /**
-   * @param {string} $questionId
-   * @param {string} questionUrl
-   * @param {string} questionAnswer
-   * @param {string} imgAlt
-   * @param {string} nextQuestionId
-   * @param {number} totalNumberOfQuestions
-   * @param {boolean} isCorrect
-   * @param {Array<{
-   *   id: string,
-   *   text: string,
-   *   isCorrect: boolean,
-   *   isCurrent: boolean
-   * }>} answers
-   */
-  // children: questions.$id.answers.$id.ori.html({
-  //   $questionId: $qId,
-  //   questionUrl: __questionsById($qId)/url,
-  //   questionAnswer: __questionsById($qId)/answersById(__questionsById($qId)/answerId),
-  //   nextQuestionId: __nextQuestionId,
-  //   totalNumberOfQuestions: __totalNumberOfQuestions,
-  //   imgAlt: __questionsById($qId)/imgAlt,
-  //   isCorrect: __isCorrect,
-  //   nav: nav.ori.html({
-  //     questions: tree:map(__questionsById, (question, id) => ({
-  //       id: id,
-  //       isCurrentPage: calc:equals(id, $qId),
-  //     })),
-      
-  //     prevQuestionId: __prevQuestionId,
-  //     nextQuestionId: __nextQuestionId,
-  //   }),
-    
-  // })
 
   __answers: tree:map(__questionsById($qId)/answersById, (answer, answerId) => ({
     id: origami:slash/remove(answerId),

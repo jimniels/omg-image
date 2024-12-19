@@ -15,8 +15,6 @@
     title: `Guess the article`,
     currentQuestionId: $qId,
     totalNumberOfQuestions: tree:keys(__questionsById)/length,
-    // previousQuestionId: __prevQuestionId,
-    // nextQuestionId: __nextQuestionId,
   }),
 
   answers: tree:map(__question/answersById, (answer, answerId) => ({
