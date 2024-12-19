@@ -6,7 +6,7 @@
   __questionsById: questionsById.yaml,
   __prevQuestionId: helpers/getPrevQuestionId.js($qId, tree:keys(__questionsById)/length),
   __nextQuestionId: helpers/getNextQuestionId.js($qId, tree:keys(__questionsById)/length),
-  __isCorrect: calc:equals(__questionsById($qId)/answerId, $aId),
+  __isCorrect: __questionsById($qId)/answerId === $aId,
   __totalNumberOfQuestions: tree:keys(__questionsById)/length,
   __question: __questionsById($qId),
   
@@ -19,7 +19,7 @@
     <link rel="preload" href="/og-images/${__nextQuestionId}.jpg" as="image" />
   `,
   header: header.ori.html({
-    title: calc:if(__isCorrect, `Correct`, `Incorrect`),
+    title: __isCorrect ? `Correct` : `Incorrect`,
     currentQuestionId: $qId,
     totalNumberOfQuestions: __totalNumberOfQuestions,
     nextQuestionId: __nextQuestionId,
@@ -63,8 +63,8 @@
   __answers: tree:map(__questionsById($qId)/answersById, (answer, answerId) => ({
     id: origami:slash/remove(answerId),
     text: answer,
-    isCorrect: calc:equals(id, __questionsById($qId)/answerId),
-    isCurrent: calc:equals(id, $aId),
+    isCorrect: id === __questionsById($qId)/answerId,
+    isCurrent: id === $aId,
   })),
   children: `
     <div class="card">
@@ -88,17 +88,16 @@
           ${tree:map(__answers, (answer) => `
             <li class="
               answers__item
-              ${calc:if(answer/isCurrent, 'answers__item--current')}
-              ${calc:if(answer/isCorrect, 
-                'answers__item--correct', 
-                'answers__item--incorrect'
-                )}
+              ${answer/isCurrent ? 'answers__item--current' : ''}
+              ${answer/isCorrect ? 'answers__item--correct' : 'answers__item--incorrect'}
               ">
               ${answer/text}
-              ${calc:if(answer/isCorrect, 
-                svgs/iconCircleCheck.svg,
-                calc:if(answer/isCurrent, svgs/iconCircleCross.svg)
-              )}
+              ${answer/isCorrect
+                ? svgs/iconCircleCheck.svg
+                : answer/isCurrent
+                ? svgs/iconCircleCross.svg
+                : ''
+              }
             </li>
           `)}
         </ul>

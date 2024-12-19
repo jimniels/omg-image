@@ -3,24 +3,24 @@
 @param {string} _/title
 @param {string} _/head
 @param {string} _/children
-@param {string} _/$qId
+@param {string?} _/header - no present on 404
+@param {string?} _/$qId - not always present because of pages like 404
 @param {string?} _/$aId
 @param {boolean?} _/isCorrect
-
 -->
 <!DOCTYPE html>
 <html
   lang="en"
-  data-question="${_/$qId}"
-  ${calc:if(_/$aId, `
+  ${_/$qId ? `data-question="${_/$qId}"` : ''}
+  ${_/$aId ? `
     data-answer="${_/$aId}"
-    data-answer-is-correct="${calc:if(_/isCorrect, 'true', 'false')}"
-  `)}
+    data-answer-is-correct="${_/isCorrect ? 'true' : 'false'}"
+  ` : ''}
 >
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>o(m)g:image${calc:if(_/title, ` | ${_/title}`)}</title>
+    <title>o(m)g:image${_/title ? ` | ${_/title}` : ''}</title>
     <link rel="stylesheet" href="/index.css" />
     <link
       rel="icon"
@@ -51,10 +51,10 @@ summarized by an image."
       content="https://omgimg.jim-nielsen.com/preview.png"
     />
 
-    ${_/head}
+    ${_/head ? _/head : ''}
   </head>
   <body>
-    ${_/header}
+    ${_/header ? _/header : ''}
     <main>${_/children}</main>
     <footer>
       <a href="/">o(m)g:image</a> · Can you identify these articles from the web by their social share images? · <a href="https://blog.jim-nielsen.com/2024/omgimg/">Made by Jim Nielsen</a>

@@ -21,7 +21,7 @@
 
   answers: tree:map(__question/answersById, (answer, answerId) => ({
     id: origami:slash/remove(answerId),
-    isCorrect: calc:equals(__question/answerId, id),
+    isCorrect: __question/answerId === id,
     text: answer,
   })),
 
@@ -49,7 +49,7 @@
               class="answers__item answers__item--selectable"
               data-question-id="${$qId}"
               data-answer-id="${answer/id}"
-              data-answer-is-correct="${calc:if(answer/isCorrect, 'true', 'false')}"
+              data-answer-is-correct="${answer/isCorrect ? 'true' : 'false'}"
             >
               ${answer/text}
               ${svgs/iconCircle.svg}

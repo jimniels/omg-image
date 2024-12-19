@@ -1,3 +1,9 @@
+<!--
+@param {string} _/title
+@param {string} _/currentQuestionId
+@param {number} _/totalNumberOfQuestions
+@param {string?} _/nextQuestionId
+-->
 <header class="header">
   <!-- prettier-ignore -->
   <h1 class="header__title">
@@ -17,18 +23,10 @@
     </svg>
   </a>
 
-  <a
-    href="/questions/${_/previousQuestionId}/"
-    class="header__next"
-    style="transform: rotate(180deg); left: 0; display: none"
-    hidden="true"
-  >
-    ${svgs/iconChevronRight.svg}
-  </a>
-
-  ${calc:if(_/nextQuestionId, `<a
+  ${_/nextQuestionId ? `<a
     href="/questions/${_/nextQuestionId}/"
     class="header__next"
-    >${svgs/iconArrowRight.svg}</a
-  >`)}
+  >
+    ${svgs/iconArrowRight.svg} </a
+  >` : ''}
 </header>
